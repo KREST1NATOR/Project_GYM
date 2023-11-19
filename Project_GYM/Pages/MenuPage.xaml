@@ -71,6 +71,7 @@
             <Button x:Name="ClientsButton" Content="Клиенты" Margin="0,0,0,10" Height="40" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Click="ClientsButton_Click"/>
             <Button x:Name="EmployeesButton" Content="Сотрудники" Margin="0, 0, 0, 10" Height="40" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Click="EmployeesButton_Click"/>
             <Button x:Name="TrainersButton" Content="Тренеры" Margin="0, 0, 0, 10" Height="40" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Click="TrainersButton_Click"/>
+            <Button x:Name="SubscriptionsButton" Content="Абонементы" Margin="0, 0, 0, 10" Height="40" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Click="SubscriptionsButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

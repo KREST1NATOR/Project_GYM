@@ -59,5 +59,13 @@ namespace Project_GYM.Pages
             mainWindow.Title = trainersPage.Title;
             mainWindow.MainFrame.Navigate(trainersPage);
         }
+
+        private void SubscriptionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SubscriptionsPage subscriptionsPage = new SubscriptionsPage();
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.Title = subscriptionsPage.Title;
+            mainWindow.MainFrame.Navigate(subscriptionsPage);
+        }
     }
 }

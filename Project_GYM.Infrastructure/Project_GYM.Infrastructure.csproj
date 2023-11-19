@@ -64,6 +64,18 @@
   <ItemGroup>
     <Compile Include="ClientEntity.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Database\ClientRepository.cs" />
+    <Compile Include="Database\DiscountRepository.cs" />
+    <Compile Include="Database\EmployeeRepository.cs" />
+    <Compile Include="Database\GymRepository.cs" />
+    <Compile Include="Database\IBaseRepository.cs" />
+    <Compile Include="Database\JobTitleRepository.cs" />
+    <Compile Include="Database\ProductCategoryRepository.cs" />
+    <Compile Include="Database\ProductRepository.cs" />
+    <Compile Include="Database\StatusRepository.cs" />
+    <Compile Include="Database\SubscriptionRepository.cs" />
+    <Compile Include="Database\SubscriptionTypeRepository.cs" />
+    <Compile Include="Database\TrainerRepository.cs" />
     <Compile Include="DiscountEntity.cs" />
     <Compile Include="EmployeeEntity.cs" />
     <Compile Include="GymEntity.cs" />
