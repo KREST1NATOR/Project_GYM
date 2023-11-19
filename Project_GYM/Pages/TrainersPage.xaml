@@ -200,9 +200,7 @@
             <TextBox x:Name="SearchTextBox" TextWrapping="Wrap" Height="25" Width="620" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
             <DataGrid x:Name="ClientsDataGrid" Width="620" Height="200" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,20,0,0" Style="{DynamicResource DataGridRoundedStyle}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Surname}" CanUserReorder="False" Header="Фамилия"/>
-                    <DataGridTextColumn Binding="{Binding First_name}" CanUserReorder="False" Header="Имя"/>
-                    <DataGridTextColumn Binding="{Binding Patronymic}" CanUserSort="True" CanUserReorder="False" Header="Отчество"/>
+                    <DataGridTextColumn Binding="{Binding Surname}" CanUserReorder="False" Header="ФИО"/>
                     <DataGridTextColumn Binding="{Binding Date_of_birth}" CanUserReorder="False" Header="Дата рождения"/>
                     <DataGridTextColumn Binding="{Binding Length_of_service}" CanUserReorder="False" Header="Стаж работы"/>
                 </DataGrid.Columns>

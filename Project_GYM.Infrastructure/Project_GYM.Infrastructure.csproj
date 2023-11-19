@@ -80,6 +80,7 @@
     <Compile Include="EmployeeEntity.cs" />
     <Compile Include="GymEntity.cs" />
     <Compile Include="JobTitleEntity.cs" />
+    <Compile Include="Mappers\ClientMapper.cs" />
     <Compile Include="ProductEntity.cs" />
     <Compile Include="ProductCategoryEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,11 +88,13 @@
     <Compile Include="SubscriptionEntity.cs" />
     <Compile Include="SubscriptionTypeEntity.cs" />
     <Compile Include="TrainerEntity.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
