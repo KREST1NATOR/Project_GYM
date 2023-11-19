@@ -1,0 +1,14 @@
+﻿<Window x:Class="Project_GYM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_GYM"
+        mc:Ignorable="d"
+        Title="Главное меню" Height="600" Width="900" WindowStartupLocation="CenterScreen" MinHeight="600" MinWidth="900">
+    <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Source="/Pages/MenuPage.xaml" Height="600" Width="900"/>
+        <Image x:Name="Logo" Width="150" Source="/Images/logo.png" Margin="10,0,0,0" HorizontalAlignment="Left" Height="554" VerticalAlignment="Top"/>
+        <Label x:Name="LogoName" Content="Сворцовский крест" Margin="0,28,0,0" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="360"/>
+    </Grid>
+</Window>
