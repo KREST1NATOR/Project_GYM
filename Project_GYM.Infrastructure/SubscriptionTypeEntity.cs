@@ -17,7 +17,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("Subscription type ID")]
-        public long Subscription_type_ID { get; set; }
+        public long SubscriptionTypeId { get; set; }
 
         [Required]
         [StringLength(2147483647)]

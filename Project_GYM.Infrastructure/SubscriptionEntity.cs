@@ -11,31 +11,31 @@ namespace Project_GYM.Infrastructure
     {
         [Key]
         [Column("Subscription ID")]
-        public long Subscription_ID { get; set; }
+        public long SubscriptionId { get; set; }
 
         [Column("Start date")]
         [Required]
         [StringLength(2147483647)]
-        public string Start_date { get; set; }
+        public string StartDate { get; set; }
 
         [Column("End date")]
         [Required]
         [StringLength(2147483647)]
-        public string End_date { get; set; }
+        public string EndDate { get; set; }
 
         [Column("Status ID")]
-        public long Status_ID { get; set; }
+        public long StatusId { get; set; }
 
-        public long Subscription_type_ID { get; set; }
+        public long SubscriptionTypeId { get; set; }
 
         [Column("ID Gym")]
-        public long ID_Gym { get; set; }
+        public long IdGym { get; set; }
 
         [Column("Client ID")]
-        public long Client_ID { get; set; }
+        public long ClientId { get; set; }
 
         [Column("Trainer ID")]
-        public long? Trainer_ID { get; set; }
+        public long? TrainerId { get; set; }
 
         public virtual ClientEntity Client { get; set; }
 
@@ -43,7 +43,7 @@ namespace Project_GYM.Infrastructure
 
         public virtual StatusEntity Status { get; set; }
 
-        public virtual SubscriptionTypeEntity Subscription_type { get; set; }
+        public virtual SubscriptionTypeEntity SubscriptionType { get; set; }
 
         public virtual TrainerEntity Trainer { get; set; }
     }

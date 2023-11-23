@@ -41,7 +41,7 @@ namespace Project_GYM.Infrastructure
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<EmployeeEntity>()
-                .Property(e => e.Length_of_service)
+                .Property(e => e.LengthOfService)
                 .HasPrecision(53, 0);
 
             modelBuilder.Entity<GymEntity>()
@@ -74,12 +74,12 @@ namespace Project_GYM.Infrastructure
                 .HasPrecision(53, 0);
 
             modelBuilder.Entity<JobTitleEntity>()
-                .Property(e => e.Work_schedule)
+                .Property(e => e.WorkSchedule)
                 .HasPrecision(53, 0);
 
             modelBuilder.Entity<JobTitleEntity>()
                 .HasMany(e => e.Employee)
-                .WithRequired(e => e.Job_title)
+                .WithRequired(e => e.JobTitle)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductEntity>()
@@ -92,8 +92,8 @@ namespace Project_GYM.Infrastructure
 
             modelBuilder.Entity<ProductCategoryEntity>()
                 .HasMany(e => e.Product)
-                .WithRequired(e => e.Product_category)
-                .HasForeignKey(e => e.Product_category_ID)
+                .WithRequired(e => e.ProductCategory)
+                .HasForeignKey(e => e.ProductCategoryId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<StatusEntity>()
@@ -111,11 +111,11 @@ namespace Project_GYM.Infrastructure
 
             modelBuilder.Entity<SubscriptionTypeEntity>()
                 .HasMany(e => e.Subscription)
-                .WithRequired(e => e.Subscription_type)
+                .WithRequired(e => e.SubscriptionType)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TrainerEntity>()
-                .Property(e => e.Length_of_service)
+                .Property(e => e.LengthOfService)
                 .HasPrecision(53, 0);
         }
     }

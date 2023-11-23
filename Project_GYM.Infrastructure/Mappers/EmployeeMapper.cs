@@ -1,34 +1,33 @@
-﻿using System;
+﻿using Project_GYM.Infrastructure.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Project_GYM.Infrastructure.ViewModels;
-using Project_GYM.Infrastructure.Database;
 
 namespace Project_GYM.Infrastructure.Mappers
 {
-    public static class ClientMapper
+    public static class EmployeeMapper
     {
-        public static ClientViewModel Map(ClientEntity entity)
+        public static EmployeeViewModel Map(EmployeeEntity entity)
         {
-            var viewModel = new ClientViewModel
+            var viewModel = new EmployeeViewModel
             {
-                ClientId = entity.ClientId,
+                EmployeeId = entity.EmployeeId,
                 Surname = entity.Surname,
                 FirstName = entity.FirstName,
                 Patronymic = entity.Patronymic,
                 Gender = entity.Gender,
-                DateOfBirth = entity.DateOfBirth
+                DateOfBirth = entity.DateOfBirth,
+                LengthOfService = entity.LengthOfService.ToString()
             };
             return viewModel;
         }
 
-        public static List<ClientViewModel> Map(List<ClientEntity> entities)
+        public static List<EmployeeViewModel> Map(List<EmployeeEntity> entities)
         {
             var viewModels = entities.Select(x => Map(x)).ToList();
             return viewModels;
         }
-
     }
 }

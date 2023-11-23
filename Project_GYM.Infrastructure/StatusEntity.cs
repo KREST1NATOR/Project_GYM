@@ -16,7 +16,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("Status ID")]
-        public long Status_ID { get; set; }
+        public long StatusId { get; set; }
 
         [Required]
         [StringLength(2147483647)]

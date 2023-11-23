@@ -159,6 +159,12 @@
   <ItemGroup>
     <Resource Include="Images\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project_GYM.Infrastructure\Project_GYM.Infrastructure.csproj">
+      <Project>{3003A765-D225-4B21-B3CA-5FD63FB1DAFC}</Project>
+      <Name>Project_GYM.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

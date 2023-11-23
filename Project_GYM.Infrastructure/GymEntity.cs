@@ -21,7 +21,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("ID gym")]
-        public long ID_gym { get; set; }
+        public long IdGym { get; set; }
 
         [Required]
         [StringLength(2147483647)]
@@ -34,12 +34,12 @@ namespace Project_GYM.Infrastructure
         [Column("Start time")]
         [Required]
         [StringLength(2147483647)]
-        public string Start_time { get; set; }
+        public string StartTime { get; set; }
 
         [Column("End time")]
         [Required]
         [StringLength(2147483647)]
-        public string End_time { get; set; }
+        public string EndTime { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientEntity> Client { get; set; }

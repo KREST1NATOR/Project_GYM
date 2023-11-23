@@ -11,7 +11,7 @@ namespace Project_GYM.Infrastructure
     {
         [Key]
         [Column("Product ID")]
-        public long Product_ID { get; set; }
+        public long ProductId { get; set; }
 
         [Required]
         [StringLength(2147483647)]
@@ -24,16 +24,16 @@ namespace Project_GYM.Infrastructure
         [Column("Expiration date")]
         [Required]
         [StringLength(2147483647)]
-        public string Expiration_date { get; set; }
+        public string ExpirationDate { get; set; }
 
         [Column("Product category ID")]
-        public long Product_category_ID { get; set; }
+        public long ProductCategoryId { get; set; }
 
         [Column("ID Gym")]
-        public long ID_Gym { get; set; }
+        public long IdGym { get; set; }
 
         public virtual GymEntity Gym { get; set; }
 
-        public virtual ProductCategoryEntity Product_category { get; set; }
+        public virtual ProductCategoryEntity ProductCategory { get; set; }
     }
 }

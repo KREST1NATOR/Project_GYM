@@ -17,7 +17,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("Job title ID")]
-        public long Job_title_ID { get; set; }
+        public long JobTitleId { get; set; }
 
         [Required]
         [StringLength(2147483647)]
@@ -26,7 +26,7 @@ namespace Project_GYM.Infrastructure
         public decimal Salary { get; set; }
 
         [Column("Work schedule")]
-        public decimal Work_schedule { get; set; }
+        public decimal WorkSchedule { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeEntity> Employee { get; set; }

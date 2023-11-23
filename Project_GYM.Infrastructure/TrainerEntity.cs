@@ -17,7 +17,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("Trainer ID")]
-        public long Trainer_ID { get; set; }
+        public long TrainerID { get; set; }
 
         [Required]
         [StringLength(2147483647)]
@@ -26,7 +26,7 @@ namespace Project_GYM.Infrastructure
         [Column("First name")]
         [Required]
         [StringLength(2147483647)]
-        public string First_name { get; set; }
+        public string FirstName { get; set; }
 
         [StringLength(2147483647)]
         public string Patronymic { get; set; }
@@ -34,13 +34,13 @@ namespace Project_GYM.Infrastructure
         [Column("Date of birth")]
         [Required]
         [StringLength(2147483647)]
-        public string Date_of_birth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Column("Length of service")]
-        public decimal Length_of_service { get; set; }
+        public decimal LengthOfService { get; set; }
 
         [Column("ID Gym")]
-        public long ID_Gym { get; set; }
+        public long IDGym { get; set; }
 
         public virtual GymEntity Gym { get; set; }
 

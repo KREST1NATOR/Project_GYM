@@ -11,7 +11,7 @@ namespace Project_GYM.Infrastructure
     {
         [Key]
         [Column("Employee ID")]
-        public long Employee_ID { get; set; }
+        public long EmployeeId { get; set; }
 
         [Required]
         [StringLength(2147483647)]
@@ -20,28 +20,29 @@ namespace Project_GYM.Infrastructure
         [Column("First name")]
         [Required]
         [StringLength(2147483647)]
-        public string First_name { get; set; }
+        public string FirstName { get; set; }
 
         [StringLength(2147483647)]
         public string Patronymic { get; set; }
 
         [Column("Date of birth")]
         [StringLength(2147483647)]
-        public string Date_of_birth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required]
         [StringLength(2147483647)]
         public string Gender { get; set; }
 
         [Column("Length of service")]
-        public decimal Length_of_service { get; set; }
+        public decimal LengthOfService { get; set; }
 
-        public long Job_title_ID { get; set; }
+        [Column("Job_title_ID")]
+        public long JobTitleId { get; set; }
 
         [Column("ID Gym")]
-        public long ID_Gym { get; set; }
+        public long IdGym { get; set; }
 
-        public virtual JobTitleEntity Job_title { get; set; }
+        public virtual JobTitleEntity JobTitle { get; set; }
 
         public virtual GymEntity Gym { get; set; }
     }

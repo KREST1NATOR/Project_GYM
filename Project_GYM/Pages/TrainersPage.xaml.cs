@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Project_GYM.Infrastructure.Database;
+using Project_GYM.Infrastructure.Mappers;
+using Project_GYM.Infrastructure.ViewModels;
 
 namespace Project_GYM.Pages
 {
@@ -20,9 +23,12 @@ namespace Project_GYM.Pages
     /// </summary>
     public partial class TrainersPage : Page
     {
+        private TrainerRepository _repository;
         public TrainersPage()
         {
             InitializeComponent();
+            _repository = new TrainerRepository();
+            TrainersDataGrid.ItemsSource = _repository.GetList();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

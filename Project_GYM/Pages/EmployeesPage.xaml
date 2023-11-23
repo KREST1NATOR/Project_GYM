@@ -198,11 +198,14 @@
         <Button x:Name="ExitButton" Content="В меню" Height="45" Width="150" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="30,490,720,65" Click="ExitButton_Click"/>
         <StackPanel Margin="30,215,245,115">
             <TextBox x:Name="SearchTextBox" TextWrapping="Wrap" Height="25" Width="620" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <DataGrid x:Name="ClientsDataGrid" Width="620" Height="200" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,20,0,0" Style="{DynamicResource DataGridRoundedStyle}" AutoGenerateColumns="False">
+            <DataGrid x:Name="EmployeesDataGrid" Width="620" Height="200" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,20,0,0" Style="{DynamicResource DataGridRoundedStyle}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Surname}" CanUserReorder="False" Header="ФИО"/>
+                    <DataGridTextColumn Binding="{Binding EmployeeId}" Header="ID" Visibility="Hidden" CanUserReorder="False"/>
+                    <DataGridTextColumn Binding="{Binding Surname}" CanUserReorder="False" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}" CanUserReorder="False" Header="Имя"/>
+                    <DataGridTextColumn Binding="{Binding Patronymic}" CanUserReorder="False" Header="Отчество"/>
                     <DataGridTextColumn Binding="{Binding Gender}" CanUserReorder="False" Header="Пол"/>
-                    <DataGridTextColumn Binding="{Binding Length_of_service}" CanUserReorder="False" Header="Стаж работы"/>
+                    <DataGridTextColumn Binding="{Binding LengthOfService}" CanUserReorder="False" Header="Стаж работы"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

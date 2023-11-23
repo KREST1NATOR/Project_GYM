@@ -18,6 +18,13 @@ namespace Project_GYM.Infrastructure.Database
                 return ClientMapper.Map(items);
             }
         }
-
+        public ClientViewModel GetById(long id)
+        {
+            using (var context = new Context())
+            {
+                var item = context.Clients.FirstOrDefault(x => x.ClientId == id);
+                return ClientMapper.Map(item);
+            }
+        }
     }
 }

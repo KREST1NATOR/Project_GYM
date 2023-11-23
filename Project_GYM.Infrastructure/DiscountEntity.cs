@@ -17,7 +17,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("Discount ID")]
-        public long Discount_ID { get; set; }
+        public long DiscountId { get; set; }
 
         [Required]
         [StringLength(2147483647)]

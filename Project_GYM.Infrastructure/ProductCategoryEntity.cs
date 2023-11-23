@@ -17,7 +17,7 @@ namespace Project_GYM.Infrastructure
 
         [Key]
         [Column("Category ID")]
-        public long Category_ID { get; set; }
+        public long CategoryId { get; set; }
 
         [Required]
         [StringLength(2147483647)]

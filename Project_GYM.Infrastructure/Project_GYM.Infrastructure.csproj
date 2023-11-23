@@ -81,6 +81,9 @@
     <Compile Include="GymEntity.cs" />
     <Compile Include="JobTitleEntity.cs" />
     <Compile Include="Mappers\ClientMapper.cs" />
+    <Compile Include="Mappers\EmployeeMapper.cs" />
+    <Compile Include="Mappers\SubscriptionTypeMapper.cs" />
+    <Compile Include="Mappers\TrainerMapper.cs" />
     <Compile Include="ProductEntity.cs" />
     <Compile Include="ProductCategoryEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +92,9 @@
     <Compile Include="SubscriptionTypeEntity.cs" />
     <Compile Include="TrainerEntity.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\SubscriptionTypeViewModel.cs" />
+    <Compile Include="ViewModels\TrainerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
