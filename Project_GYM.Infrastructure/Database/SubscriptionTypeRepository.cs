@@ -26,5 +26,71 @@ namespace Project_GYM.Infrastructure.Database
                 return SubscriptionTypeMapper.Map(item);
             }
         }
+        public SubscriptionTypeViewModel Add(SubscriptionTypeViewModel entity)
+        {
+            entity.Name = entity.Name.Trim();
+            entity.Cost = entity.Cost;
+            entity.Term = entity.Term;
+            if (string.IsNullOrEmpty(entity.Name))
+            {
+                throw new Exception("Поля не могут быть пустыми");
+            }
+            using (var context = new Context())
+            {
+                var item = SubscriptionTypeMapper.Map(entity);
+                context.SubscriptionTypes.Add(item);
+                if (item != null)
+                {
+                    item.Name = entity.Name;
+                    item.Cost = entity.Cost;
+                    item.Term = entity.Term;
+                    context.SubscriptionTypes.Add(item);
+                    context.SaveChanges();
+                    MessageBox.Show("Успешное сохранение");
+                }
+                else
+                {
+                    MessageBox.Show("Ничего не было сохранено");
+                }
+                return SubscriptionTypeMapper.Map(item);
+            }
+        }
+        public void Delete(long id)
+        {
+            using (var context = new Context())
+            {
+                var user = context.SubscriptionTypes.FirstOrDefault(x => x.SubscriptionTypeId == id);
+                if (user != null)
+                {
+                    context.SubscriptionTypes.Remove(user);
+                    context.SaveChanges();
+                }
+            }
+        }
+        public SubscriptionTypeViewModel Update(SubscriptionTypeViewModel entity)
+        {
+            entity.Name = entity.Name.Trim();
+            entity.Cost = entity.Cost;
+            entity.Term = entity.Term;
+            if (string.IsNullOrEmpty(entity.Name))
+                MessageBox.Show("Поля, кроме отчества, не могут быть пустыми");
+
+            using (var context = new Context())
+            {
+                var item = context.SubscriptionTypes.FirstOrDefault(x => x.SubscriptionTypeId == entity.SubscriptionTypeId);
+                if (item != null)
+                {
+                    item.Name = entity.Name;
+                    item.Cost = entity.Cost;
+                    item.Term = entity.Term;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Ничего не было сохранено");
+                }
+                return SubscriptionTypeMapper.Map(item);
+            }
+        }
     }
 }

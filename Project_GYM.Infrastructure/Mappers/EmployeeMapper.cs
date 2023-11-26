@@ -29,5 +29,19 @@ namespace Project_GYM.Infrastructure.Mappers
             var viewModels = entities.Select(x => Map(x)).ToList();
             return viewModels;
         }
+        public static EmployeeEntity Map(EmployeeViewModel viewModel) //Скорее всего неправильно
+        {
+            var entity = new EmployeeEntity
+            {
+                EmployeeId = viewModel.EmployeeId,
+                Surname = viewModel.Surname,
+                FirstName = viewModel.FirstName,
+                Patronymic = viewModel.Patronymic,
+                Gender = viewModel.Gender,
+                DateOfBirth = viewModel.DateOfBirth,
+                //LengthOfService = viewModel.LengthOfService.ToString()
+            };
+            return entity;
+        }
     }
 }

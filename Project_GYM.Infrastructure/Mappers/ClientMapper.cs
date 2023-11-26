@@ -30,5 +30,18 @@ namespace Project_GYM.Infrastructure.Mappers
             return viewModels;
         }
 
+        public static ClientEntity Map(ClientViewModel viewModel) //Скорее всего неправильно
+        {
+            var entity = new ClientEntity
+            {
+                ClientId = viewModel.ClientId,
+                Surname = viewModel.Surname,
+                FirstName = viewModel.FirstName,
+                Patronymic = viewModel.Patronymic,
+                Gender = viewModel.Gender,
+                DateOfBirth = viewModel.DateOfBirth
+            };
+            return entity;
+        }
     }
 }
