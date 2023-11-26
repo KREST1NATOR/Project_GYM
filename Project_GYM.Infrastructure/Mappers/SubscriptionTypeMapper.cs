@@ -9,22 +9,32 @@ namespace Project_GYM.Infrastructure.Mappers
 {
     public static class SubscriptionTypeMapper
     {
-            public static SubscriptionTypeViewModel Map(SubscriptionTypeEntity entity)
+        public static SubscriptionTypeViewModel Map(SubscriptionTypeEntity entity)
+        {
+            var viewModel = new SubscriptionTypeViewModel
             {
-                var viewModel = new SubscriptionTypeViewModel
-                {
-                    SubscriptionTypeId = entity.SubscriptionTypeId,
-                    Name = entity.Name,
-                    Cost = entity.Cost,
-                    Term = entity.Term
-                };
-                return viewModel;
-            }
-
-            public static List<SubscriptionTypeViewModel> Map(List<SubscriptionTypeEntity> entities)
+                SubscriptionTypeId = entity.SubscriptionTypeId,
+                Name = entity.Name,
+                Cost = entity.Cost,
+                Term = entity.Term
+            };
+            return viewModel;
+        }
+        public static List<SubscriptionTypeViewModel> Map(List<SubscriptionTypeEntity> entities)
+        {
+            var viewModels = entities.Select(x => Map(x)).ToList();
+            return viewModels;
+        }
+        public static SubscriptionTypeEntity Map(SubscriptionTypeViewModel viewModel) //Скорее всего неправильно
+        {
+            var item = new SubscriptionTypeEntity
             {
-                var viewModels = entities.Select(x => Map(x)).ToList();
-                return viewModels;
-            }
+                SubscriptionTypeId = viewModel.SubscriptionTypeId,
+                Name = viewModel.Name,
+                Cost = viewModel.Cost,
+                Term = viewModel.Term
+            };
+            return item;
+        }
     }
 }
