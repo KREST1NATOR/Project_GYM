@@ -8,7 +8,6 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Data.Entity.Core.Metadata.Edm;
 
 namespace Project_GYM.Infrastructure.Database
 {

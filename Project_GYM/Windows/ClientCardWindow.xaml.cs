@@ -35,20 +35,20 @@ namespace Project_GYM.Windows
             if (selectedItem != null)
             {
                 _selectedItem = selectedItem;
-                Surname = selectedItem.Surname;
-                FirstName = selectedItem.FirstName;
-                Patronymic = selectedItem.Patronymic;
-                Gender = selectedItem.Gender;
-                DateOfBirth = selectedItem.DateOfBirth;
+                Surname.Text = selectedItem.Surname;
+                FirstName.Text = selectedItem.FirstName;
+                Patronymic.Text = selectedItem.Patronymic;
+                Gender.Text = selectedItem.Gender;
+                DateOfBirth.Text = selectedItem.DateOfBirth;
             }
             else
             {
                 _selectedItem = selectedItem;
                 Surname.Text = null;
                 FirstName.Text = null;
-                Patronymic = null;
-                Gender = null;
-                DateOfBirth = null;
+                Patronymic.Text = null;
+                Gender.Text = null;
+                DateOfBirth.Text = null;
             }
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)

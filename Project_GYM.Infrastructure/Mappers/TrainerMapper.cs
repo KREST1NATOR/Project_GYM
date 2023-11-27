@@ -28,18 +28,18 @@ namespace Project_GYM.Infrastructure.Mappers
             var viewModels = entities.Select(x => Map(x)).ToList();
             return viewModels;
         }
-        public static TrainerEntity Map(TrainerViewModel viewModel) //Скорее всего неправильно
+        public static TrainerEntity Map(TrainerViewModel viewModel)
         {
-            var item = new TrainerEntity
+            var entity = new TrainerEntity
             {
                 TrainerID = viewModel.TrainerID,
                 Surname = viewModel.Surname,
                 FirstName = viewModel.FirstName,
                 Patronymic = viewModel.Patronymic,
                 DateOfBirth = viewModel.DateOfBirth,
-                //LengthOfService = viewModel.LengthOfService.ToString()
+                LengthOfService = Convert.ToDecimal(viewModel.LengthOfService),
             };
-            return item;
+            return entity;
         }
     }
 }

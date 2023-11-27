@@ -25,16 +25,16 @@ namespace Project_GYM.Infrastructure.Mappers
             var viewModels = entities.Select(x => Map(x)).ToList();
             return viewModels;
         }
-        public static SubscriptionTypeEntity Map(SubscriptionTypeViewModel viewModel) //Скорее всего неправильно
+        public static SubscriptionTypeEntity Map(SubscriptionTypeViewModel viewModel)
         {
-            var item = new SubscriptionTypeEntity
+            var entity = new SubscriptionTypeEntity
             {
                 SubscriptionTypeId = viewModel.SubscriptionTypeId,
                 Name = viewModel.Name,
                 Cost = viewModel.Cost,
                 Term = viewModel.Term
             };
-            return item;
+            return entity;
         }
     }
 }
