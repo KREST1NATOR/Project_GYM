@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Project_GYM.Infrastructure.Consts;
+using Project_GYM.Infrastructure.Database;
 using Project_GYM.Windows;
 
 namespace Project_GYM.Pages
@@ -29,10 +31,13 @@ namespace Project_GYM.Pages
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            AuthWindow authWindow = new AuthWindow();
+            /*AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.Close();
+            mainWindow.Close();*/
+            
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Logout();
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project_GYM.Infrastructure.Consts;
+using Project_GYM.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,19 @@ namespace Project_GYM
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            UserNameTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.UserName];
+            RoleNameTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.RoleName];
+        }
+        public void Logout()
+        {
+            Application.Current.Resources.Remove(UserInfoConsts.UserId);
+            Application.Current.Resources.Remove(UserInfoConsts.UserName);
+            //Application.Current.Resources.Remove(UserInfoConsts.RoleName);
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+
+            this.Close();
         }
     }
 }

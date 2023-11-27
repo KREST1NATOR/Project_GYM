@@ -36,6 +36,10 @@ namespace Project_GYM.Infrastructure
         [Column("Length of service")]
         public decimal LengthOfService { get; set; }
 
+        [Required]
+        [StringLength(2147483647)]
+        public string Password { get; set; }
+
         [Column("Job_title_ID")]
         public long JobTitleId { get; set; }
 
