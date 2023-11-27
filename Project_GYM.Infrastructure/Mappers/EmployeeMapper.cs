@@ -19,7 +19,8 @@ namespace Project_GYM.Infrastructure.Mappers
                 Patronymic = entity.Patronymic,
                 Gender = entity.Gender,
                 DateOfBirth = entity.DateOfBirth,
-                LengthOfService = entity.LengthOfService.ToString()
+                LengthOfService = entity.LengthOfService.ToString(),
+                Login = entity.Surname + entity.FirstName + entity.Patronymic
             };
             return viewModel;
         }

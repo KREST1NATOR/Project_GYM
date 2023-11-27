@@ -15,5 +15,7 @@ namespace Project_GYM.Infrastructure.ViewModels
         public string Gender { get; set; }
         public string DateOfBirth { get; set; }
         public string LengthOfService { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }
