@@ -29,7 +29,7 @@ namespace Project_GYM.Infrastructure.Mappers
             var viewModels = entities.Select(x => Map(x)).ToList();
             return viewModels;
         }
-        public static EmployeeEntity Map(EmployeeViewModel viewModel) //Скорее всего неправильно
+        public static EmployeeEntity Map(EmployeeViewModel viewModel)
         {
             var entity = new EmployeeEntity
             {
@@ -39,7 +39,7 @@ namespace Project_GYM.Infrastructure.Mappers
                 Patronymic = viewModel.Patronymic,
                 Gender = viewModel.Gender,
                 DateOfBirth = viewModel.DateOfBirth,
-                //LengthOfService = viewModel.LengthOfService.ToString()
+                LengthOfService = Convert.ToDecimal(viewModel.LengthOfService),
             };
             return entity;
         }

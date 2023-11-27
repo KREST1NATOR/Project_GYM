@@ -34,9 +34,9 @@ namespace Project_GYM.Windows
             if (selectedItem != null)
             {
                 _selectedItem = selectedItem;
-                Name = selectedItem.Name;
-                Cost = selectedItem.Cost;
-                Term = selectedItem.Term;
+                Name.Text = selectedItem.Name;
+                Cost.Text = selectedItem.Cost.ToString();
+                Term.Text = selectedItem.Term.ToString();
             }
             else
             {
@@ -65,8 +65,8 @@ namespace Project_GYM.Windows
                         {
                             SubscriptionTypeId = _selectedItem.SubscriptionTypeId,
                             Name = Name.Text,
-                            //Cost = Cost.Text,
-                            //Term = Term.Text,
+                            Cost = Convert.ToDecimal(Cost.Text),
+                            Term = Convert.ToDecimal(Term.Text),
                         };
                         if (_repository != null)
                         {

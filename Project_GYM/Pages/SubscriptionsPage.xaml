@@ -191,14 +191,14 @@
 
     <Grid>
         <StackPanel Margin="660,10,50,10">
-            <Button x:Name="AddSubscriptionButton" Content="Добавить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,200,0,0"/>
-            <Button x:Name="UpdateSubscriptionsButton" Content="Обновить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,50,0,0"/>
-            <Button x:Name="DeleteSubscriptionButton" Content="Удалить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,50,0,0"/>
+            <Button x:Name="AddSubscriptionButton" Content="Добавить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,200,0,0" Click="AddSubscriptionButton_Click"/>
+            <Button x:Name="UpdateSubscriptionsButton" Content="Обновить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,50,0,0" Click="UpdateSubscriptionsButton_Click"/>
+            <Button x:Name="DeleteSubscriptionButton" Content="Удалить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,50,0,0" Click="DeleteSubscriptionButton_Click"/>
         </StackPanel>
         <Button x:Name="ExitButton" Content="В меню" Height="45" Width="150" FontFamily="Arial" FontSize="20" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="30,490,720,65" Click="ExitButton_Click"/>
         <StackPanel Margin="30,215,245,115">
             <TextBox x:Name="SearchTextBox" TextWrapping="Wrap" Height="25" Width="620" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <DataGrid x:Name="SubscriptionsDataGrid" IsReadOnly="True" Width="620" Height="200" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,20,0,0" Style="{DynamicResource DataGridRoundedStyle}" AutoGenerateColumns="False">
+            <DataGrid x:Name="SubscriptionsDataGrid" IsReadOnly="True" Width="620" Height="200" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,20,0,0" Style="{DynamicResource DataGridRoundedStyle}" AutoGenerateColumns="False" MouseDoubleClick="SubscriptionsDataGrid_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding SubscriptionTypeId}" CanUserReorder="False" Header="ID" Visibility="Hidden" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Name}" CanUserReorder="False" Header="Название" IsReadOnly="True"/>

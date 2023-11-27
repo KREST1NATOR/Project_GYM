@@ -30,7 +30,7 @@ namespace Project_GYM.Infrastructure.Mappers
             return viewModels;
         }
 
-        public static ClientEntity Map(ClientViewModel viewModel) //Скорее всего неправильно
+        public static ClientEntity Map(ClientViewModel viewModel)
         {
             var entity = new ClientEntity
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Project_GYM.Infrastructure.Mappers;
 using Project_GYM.Infrastructure.ViewModels;
+using System.Windows;
 
 namespace Project_GYM.Infrastructure.Database
 {
@@ -49,7 +50,7 @@ namespace Project_GYM.Infrastructure.Database
                     item.Patronymic = entity.Patronymic;
                     item.Gender = entity.Gender;
                     item.DateOfBirth = entity.DateOfBirth;
-                    //item.LengthOfService = entity.LengthOfService.ToString();
+                    item.LengthOfService = Convert.ToDecimal(entity.LengthOfService);
                     context.Employees.Add(item);
                     context.SaveChanges();
                     MessageBox.Show("Успешное сохранение");
