@@ -100,5 +100,23 @@ namespace Project_GYM.Infrastructure.Database
                 return TrainerMapper.Map(item);
             }
         }
+        public List<TrainerViewModel> Search(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+            }
+
+            search = search.Trim().ToLower();
+
+            using (var context = new Context())
+            {
+                var result = context.Trainers
+                    .Where(x => x.Surname.Contains(search) || x.FirstName.Contains(search) || x.Patronymic.Contains(search))
+                    .ToList();
+
+                return TrainerMapper.Map(result);
+            }
+        }
     }
 }

@@ -29,15 +29,5 @@ namespace Project_GYM
             UserNameTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.UserName];
             JobTitleTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.JobTitle];
         }
-        public void Logout()
-        {
-            //Application.Current.Resources.Remove(UserInfoConsts.UserId);
-            //Application.Current.Resources.Remove(UserInfoConsts.UserName);
-            //Application.Current.Resources.Remove(UserInfoConsts.JobTitle);
-            AuthWindow authWindow = new AuthWindow();
-            authWindow.Show();
-
-            this.Close();
-        }
     }
 }

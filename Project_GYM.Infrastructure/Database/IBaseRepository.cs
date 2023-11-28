@@ -14,6 +14,7 @@ namespace Project_GYM.Infrastructure.Database
         TEntity Update(TEntity entity);
         TEntity Delete(long id);
         TEntity Add(TEntity entity);
+        List<TEntity> Search(string searchQuery);
     }
 
 }
