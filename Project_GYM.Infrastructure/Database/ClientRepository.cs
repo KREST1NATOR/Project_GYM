@@ -102,5 +102,23 @@ namespace Project_GYM.Infrastructure.Database
                 return ClientMapper.Map(item);
             }
         }
+        public List<ClientViewModel> Search(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+            }
+
+            search = search.Trim().ToLower();
+
+            using (var context = new Context())
+            {
+                var result = context.Clients
+                    .Where(x => x.Surname.Contains(search) || x.FirstName.Contains(search) || x.Patronymic.Contains(search))
+                    .ToList();
+
+                return ClientMapper.Map(result);
+            }
+        }
     }
 }

@@ -35,9 +35,6 @@ namespace Project_GYM.Pages
             authWindow.Show();
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.Close();*/
-            
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Logout();
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Project_GYM.Infrastructure.Mappers;
 using Project_GYM.Infrastructure.ViewModels;
 using System.Windows;
+using System.Data.Entity;
 
 namespace Project_GYM.Infrastructure.Database
 {
@@ -122,9 +123,29 @@ namespace Project_GYM.Infrastructure.Database
 
             using (var context = new Context())
             {
-                var item = context.Employees.FirstOrDefault(e => e.Login == login && e.Password == password);
+                var item = context.Employees
+                    .Include(x => x.JobTitle)
+                    .FirstOrDefault(e => e.Login == login && e.Password == password);
 
-                return item;
+                return EmployeeMapper.Map(item);
+            }
+        }
+        public List<EmployeeViewModel> Search(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+            }
+
+            search = search.Trim().ToLower();
+
+            using (var context = new Context())
+            {
+                var result = context.Employees
+                    .Where(x => x.Surname.Contains(search) || x.FirstName.Contains(search) || x.Patronymic.Contains(search))
+                    .ToList();
+
+                return EmployeeMapper.Map(result);
             }
         }
     }

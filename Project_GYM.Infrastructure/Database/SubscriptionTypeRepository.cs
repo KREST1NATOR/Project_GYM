@@ -93,5 +93,23 @@ namespace Project_GYM.Infrastructure.Database
                 return SubscriptionTypeMapper.Map(item);
             }
         }
+        public List<SubscriptionTypeViewModel> Search(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+            }
+
+            search = search.Trim().ToLower();
+
+            using (var context = new Context())
+            {
+                var result = context.SubscriptionTypes
+                    .Where(x => x.Name.Contains(search))
+                    .ToList();
+
+                return SubscriptionTypeMapper.Map(result);
+            }
+        }
     }
 }
