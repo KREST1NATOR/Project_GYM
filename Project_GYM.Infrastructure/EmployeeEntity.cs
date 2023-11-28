@@ -40,6 +40,10 @@ namespace Project_GYM.Infrastructure
         [StringLength(2147483647)]
         public string Password { get; set; }
 
+        [Required]
+        [StringLength(2147483647)]
+        public string Login { get; set; }
+
         [Column("Job_title_ID")]
         public long JobTitleId { get; set; }
 

@@ -103,7 +103,7 @@ namespace Project_GYM.Infrastructure.Database
                 return EmployeeMapper.Map(item);
             }
         }
-        public EmployeeEntity ValidateAndGetUser(string login, string password)
+        public EmployeeViewModel ValidateAndGetUser(string login, string password)
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
@@ -122,8 +122,7 @@ namespace Project_GYM.Infrastructure.Database
 
             using (var context = new Context())
             {
-                var item = context.Employees
-                    .FirstOrDefault(e => EmployeeMapper.Map(e).Login == login && e.Password == password);
+                var item = context.Employees.FirstOrDefault(e => e.Login == login && e.Password == password);
 
                 return item;
             }

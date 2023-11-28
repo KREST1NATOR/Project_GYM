@@ -12,11 +12,11 @@
         <Label x:Name="LogoName" Content="Сворцовский крест" Margin="0,28,0,0" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="360"/>
         <StackPanel Width="120" Margin="0,78,145,0" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top">
             <Label Content="Пользователь:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
-            <Label Content="Роль:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+            <Label Content="Должность:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
         </StackPanel>
         <StackPanel Width="120" Margin="0,83,25,0" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top">
             <TextBlock x:Name="UserNameTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" Margin="0,0,0,2"/>
-            <TextBlock x:Name="RoleNameTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF"/>
+            <TextBlock x:Name="JobTitleTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF"/>
         </StackPanel>
     </Grid>
 </Window>
