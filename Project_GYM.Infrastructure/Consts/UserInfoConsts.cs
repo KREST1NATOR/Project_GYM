@@ -8,8 +8,8 @@ namespace Project_GYM.Infrastructure.Consts
 {
     public class UserInfoConsts
     {
-        public static string RoleId = "roleId";
-        public static string RoleName = "roleName";
+        public static string JobTitleId = "jobTitleId";
+        public static string JobTitle = "jobTitle";
         public static string UserName = "userName";
         public static string UserId = "id";
     }

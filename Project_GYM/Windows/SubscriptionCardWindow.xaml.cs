@@ -83,8 +83,8 @@ namespace Project_GYM.Windows
                         var entity = new SubscriptionTypeViewModel
                         {
                             Name = Name.Text,
-                            //Cost = Cost.Text,
-                            //Term = Term.Text,
+                            Cost = Convert.ToDecimal(Cost.Text),
+                            Term = Convert.ToDecimal(Term.Text),
                         };
                         if (_repository != null)
                         {

@@ -27,13 +27,13 @@ namespace Project_GYM
             InitializeComponent();
             DataContext = this;
             UserNameTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.UserName];
-            RoleNameTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.RoleName];
+            JobTitleTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.JobTitle];
         }
         public void Logout()
         {
-            Application.Current.Resources.Remove(UserInfoConsts.UserId);
-            Application.Current.Resources.Remove(UserInfoConsts.UserName);
-            //Application.Current.Resources.Remove(UserInfoConsts.RoleName);
+            //Application.Current.Resources.Remove(UserInfoConsts.UserId);
+            //Application.Current.Resources.Remove(UserInfoConsts.UserName);
+            //Application.Current.Resources.Remove(UserInfoConsts.JobTitle);
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
 

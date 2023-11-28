@@ -41,8 +41,9 @@ namespace Project_GYM.Windows
                 if (user != null)
                 {
                     Application.Current.Resources[UserInfoConsts.UserId] = user.EmployeeId;
-                    Application.Current.Resources[UserInfoConsts.UserName] = user.FirstName;
-                    //Application.Current.Resources[UserInfoConsts.RoleName] = user.Role.Name;
+                    Application.Current.Resources[UserInfoConsts.UserName] = user.Login;
+                    Application.Current.Resources[UserInfoConsts.JobTitleId] = user.JobTitleId;
+                    Application.Current.Resources[UserInfoConsts.JobTitleId] = user.JobTitle;
 
                     MainWindow menuWindow = new MainWindow();
                     menuWindow.Show();
@@ -66,8 +67,8 @@ namespace Project_GYM.Windows
 
         private void SignInGuestButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Resources[UserInfoConsts.RoleId] = 1;
-            Application.Current.Resources[UserInfoConsts.RoleName] = "Гость";
+            Application.Current.Resources[UserInfoConsts.JobTitleId] = 1;
+            Application.Current.Resources[UserInfoConsts.JobTitle] = "Гость";
             Application.Current.Resources[UserInfoConsts.UserName] = "Гость";
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
