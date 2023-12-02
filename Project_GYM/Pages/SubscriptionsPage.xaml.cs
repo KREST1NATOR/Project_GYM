@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project_GYM.Infrastructure;
+using Project_GYM.Infrastructure.Consts;
 using Project_GYM.Infrastructure.Database;
 using Project_GYM.Infrastructure.Mappers;
 using Project_GYM.Infrastructure.QR;
@@ -33,6 +34,7 @@ namespace Project_GYM.Pages
         public SubscriptionsPage()
         {
             InitializeComponent();
+            GrantAccessByRole();
             _repository = new SubscriptionTypeRepository();
             UpdateGrid();
         }
@@ -101,11 +103,21 @@ namespace Project_GYM.Pages
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string search = SearchTextBox.Text;
-            List<SubscriptionTypeViewModel> result = _repository.Search(search);
-            UpdateGrid();
+
+            var subscriptionTypeRepository = new SubscriptionTypeRepository();
+            var searchResults = subscriptionTypeRepository.Search(search);
+
+            // Преобразование результатов поиска в ClientViewModel
+            var searchViewModels = searchResults.Select(result => new SubscriptionTypeViewModel
+            {
+                Name = result.Name,
+            }).ToList();
+
+            // Обновление DataGrid с результатами поиска
+            SubscriptionsDataGrid.ItemsSource = searchViewModels;
         }
 
-        private void GenerateQRCode_Click(object sender, RoutedEventArgs e)
+        private void GenerateQRCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -157,6 +169,33 @@ namespace Project_GYM.Pages
                 stream.Write(data, 0, data.Length);
             }
 
+        }
+        private void GrantAccessByRole()
+        {
+            if (Application.Current.Resources.Contains(UserInfoConsts.JobTitleId))
+            {
+                int jobTitleId = Convert.ToInt32(Application.Current.Resources[UserInfoConsts.JobTitleId]);
+
+                if (jobTitleId == 2 || jobTitleId == 4) // Роль администратора 2
+                {
+                    AddSubscriptionButton.IsEnabled = false;
+                    DeleteSubscriptionButton.IsEnabled = false;
+                }
+                else if (jobTitleId == 5 || jobTitleId == 6) // Роль уборщика
+                {
+                    AddSubscriptionButton.IsEnabled = false;
+                    DeleteSubscriptionButton.IsEnabled = false;
+                    UploadButton.IsEnabled = false;
+                    GenerateQRCodeButton.IsEnabled = false;
+                }
+                else if (jobTitleId == 0) // Роль гостя
+                {
+                    AddSubscriptionButton.IsEnabled = false;
+                    DeleteSubscriptionButton.IsEnabled = false;
+                    UploadButton.IsEnabled = false;
+                    GenerateQRCodeButton.IsEnabled = false;
+                }
+            }
         }
     }
 }

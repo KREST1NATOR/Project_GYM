@@ -25,9 +25,6 @@ namespace Project_GYM
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
-            UserNameTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.UserName];
-            JobTitleTextBlock.Text = (string)Application.Current.Resources[UserInfoConsts.JobTitle];
         }
     }
 }

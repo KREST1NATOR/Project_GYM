@@ -27,14 +27,27 @@ namespace Project_GYM.Pages
         public MenuPage()
         {
             InitializeComponent();
+            GrantAccessByRole();
+
+            DataContext = this;
+
+            UserNameTextBlock.Text = Application.Current.Resources[UserInfoConsts.UserName].ToString();
+            UserNameIdTextBlock.Text = Application.Current.Resources[UserInfoConsts.UserId].ToString();
+            JobTitleTextBlock.Text = Application.Current.Resources[UserInfoConsts.JobTitle].ToString();
+            JobTitleIdTextBlock.Text = Application.Current.Resources[UserInfoConsts.JobTitleId].ToString();
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            /*AuthWindow authWindow = new AuthWindow();
+            Application.Current.Resources[UserInfoConsts.UserId] = null;
+            Application.Current.Resources[UserInfoConsts.UserName] = null;
+            Application.Current.Resources[UserInfoConsts.JobTitleId] = null;
+            Application.Current.Resources[UserInfoConsts.JobTitle] = null;
+
+            AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.Close();*/
+            mainWindow.Close();
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +81,23 @@ namespace Project_GYM.Pages
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.Title = subscriptionsPage.Title;
             mainWindow.MainFrame.Navigate(subscriptionsPage);
+        }
+        private void GrantAccessByRole()
+        {
+            if (Application.Current.Resources.Contains(UserInfoConsts.JobTitleId))
+            {
+                int jobTitleId = Convert.ToInt32(Application.Current.Resources[UserInfoConsts.JobTitleId]);
+
+                if (jobTitleId == 0) // Роль гостя
+                {
+                    ClientsButton.IsEnabled = false;
+                    EmployeesButton.IsEnabled = false;
+                }
+                else if (jobTitleId == 5 || jobTitleId == 6) // Роль уборщика
+                {
+                    ClientsButton.IsEnabled = false;
+                }
+            }
         }
     }
 }

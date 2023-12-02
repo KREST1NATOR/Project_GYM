@@ -21,6 +21,7 @@ using Project_GYM.Infrastructure.QR;
 using Project_GYM.Infrastructure.Report;
 using System.IO;
 using System.Reflection;
+using Project_GYM.Infrastructure.Consts;
 
 namespace Project_GYM.Pages
 {
@@ -33,6 +34,7 @@ namespace Project_GYM.Pages
         public ClientsPage()
         {
             InitializeComponent();
+            GrantAccessByRole();
             _repository = new ClientRepository();
             UpdateGrid();
         }
@@ -98,11 +100,23 @@ namespace Project_GYM.Pages
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string search = SearchTextBox.Text;
-            List<ClientViewModel> result = _repository.Search(search);
-            UpdateGrid();
+
+            var clientRepository = new ClientRepository();
+            var searchResults = clientRepository.Search(search);
+
+            // Преобразование результатов поиска в ClientViewModel
+            var searchViewModels = searchResults.Select(result => new ClientViewModel
+            {
+                Surname = result.Surname,
+                FirstName = result.FirstName,
+                Patronymic = result.Patronymic,
+            }).ToList();
+
+            // Обновление DataGrid с результатами поиска
+            ClientsDataGrid.ItemsSource = searchViewModels;
         }
 
-        private void GenerateQRCode_Click(object sender, RoutedEventArgs e)
+        private void GenerateQRCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -152,6 +166,18 @@ namespace Project_GYM.Pages
             using (var stream = new FileStream(path, FileMode.OpenOrCreate))
             {
                 stream.Write(data, 0, data.Length);
+            }
+        }
+        private void GrantAccessByRole()
+        {
+            if (Application.Current.Resources.Contains(UserInfoConsts.JobTitleId))
+            {
+                int jobTitleId = Convert.ToInt32(Application.Current.Resources[UserInfoConsts.JobTitleId]);
+
+                if (jobTitleId == 2 || jobTitleId == 4) // Роль администратора 2
+                {
+                    DeleteClientButton.IsEnabled = false;
+                }
             }
         }
     }

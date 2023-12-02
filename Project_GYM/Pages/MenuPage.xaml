@@ -73,5 +73,28 @@
             <Button x:Name="TrainersButton" Content="Тренеры" Margin="0, 0, 0, 10" Height="40" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Click="TrainersButton_Click"/>
             <Button x:Name="SubscriptionsButton" Content="Абонементы" Margin="0, 0, 0, 10" Height="40" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Click="SubscriptionsButton_Click"/>
         </StackPanel>
+        <Border Height="60" Width="570" Background="#FFF4F4F4" Margin="0,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Border.Resources>
+        </Border>
+        <StackPanel Width="130" Height="50" Margin="0,133,605,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Пользователь:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+            <Label Content="ID пользователя:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+        </StackPanel>
+        <StackPanel Width="130" Height="50" Margin="0,133,360,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Должность:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+            <Label Content="ID должности:" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+        </StackPanel>
+        <StackPanel Width="120" Height="50" Margin="0,138,480,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <TextBlock x:Name="UserNameTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" Margin="0,0,0,2"/>
+            <TextBlock x:Name="UserNameIdTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" Margin="0,0,0,2"/>
+        </StackPanel>
+        <StackPanel Width="190" Height="50" Margin="0,138,165,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <TextBlock x:Name="JobTitleTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" Margin="0,0,0,2"/>
+            <TextBlock x:Name="JobTitleIdTextBlock" Height="25" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF"/>
+        </StackPanel>
     </Grid>
 </Page>

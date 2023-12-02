@@ -34,7 +34,7 @@ namespace Project_GYM.Infrastructure.Database
             entity.Term = entity.Term;
             if (string.IsNullOrEmpty(entity.Name))
             {
-                throw new Exception("Поля не могут быть пустыми");
+                MessageBox.Show("Поля не могут быть пустыми");
             }
             using (var context = new Context())
             {
@@ -97,7 +97,7 @@ namespace Project_GYM.Infrastructure.Database
         {
             if (string.IsNullOrEmpty(search))
             {
-                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+                MessageBox.Show("Поисковый запрос не может быть пустым.");
             }
 
             search = search.Trim().ToLower();
@@ -105,7 +105,7 @@ namespace Project_GYM.Infrastructure.Database
             using (var context = new Context())
             {
                 var result = context.SubscriptionTypes
-                    .Where(x => x.Name.Contains(search))
+                    .Where(x => x.Name.ToLower().Contains(search))
                     .ToList();
 
                 return SubscriptionTypeMapper.Map(result);
