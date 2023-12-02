@@ -155,9 +155,9 @@
     <Grid>
         <Label Content="Абонемент" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0"/>
         <StackPanel VerticalAlignment="Center" Margin="170,0,30,0">
-            <TextBox x:Name="Name" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="Cost" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="Term" Height="25" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="NameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="CostTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="TermTextBox" Height="25" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Margin="10,0,335,0">
             <Label Content="Название" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>

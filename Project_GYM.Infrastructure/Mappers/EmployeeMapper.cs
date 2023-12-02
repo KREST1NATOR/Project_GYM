@@ -20,6 +20,9 @@ namespace Project_GYM.Infrastructure.Mappers
                 Gender = entity.Gender,
                 DateOfBirth = entity.DateOfBirth,
                 LengthOfService = entity.LengthOfService.ToString(),
+                Login = entity.Login,
+                JobTitle = entity.JobTitle.Title,
+                JobTitleId = entity.JobTitleId.ToString(),
             };
             return viewModel;
         }

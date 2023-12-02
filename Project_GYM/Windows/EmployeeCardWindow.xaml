@@ -155,12 +155,12 @@
     <Grid>
         <Label Content="Сотрудник" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"/>
         <StackPanel VerticalAlignment="Center" Margin="170,0,30,0">
-            <TextBox x:Name="Surname" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="FirstName" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="Patronymic" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="Gender" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="DateOfBirth" MaxLength="10" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="LengthOfService" Height="25" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="SurnameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="FirstNameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="PatronymicTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="GenderTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="DateOfBirthTextBox" MaxLength="10" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="LengthOfServiceTextBox" Height="25" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Margin="10,0,335,0">
             <Label Content="Фамилия" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>

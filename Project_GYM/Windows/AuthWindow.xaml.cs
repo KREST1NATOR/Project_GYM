@@ -30,48 +30,36 @@ namespace Project_GYM.Windows
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            string login = LoginTextBox.Text;
+            string password = PasswordPasswordBox.Password;
+
+            var employeeRepository = new EmployeeRepository();
+            var user = employeeRepository.ValidateAndGetUser(login, password);
+
+            if (user != null)
             {
-                string login = LoginTextBox.Text;
-                string password = PasswordPasswordBox.Password;
+                Application.Current.Resources[UserInfoConsts.UserId] = user.EmployeeId;
+                Application.Current.Resources[UserInfoConsts.UserName] = user.Login;
+                Application.Current.Resources[UserInfoConsts.JobTitleId] = user.JobTitleId;
+                Application.Current.Resources[UserInfoConsts.JobTitle] = user.JobTitle;
 
-                var employeeRepository = new EmployeeRepository();
-                var user = employeeRepository.ValidateAndGetUser(login, password);
+                MainWindow menuWindow = new MainWindow();
+                menuWindow.Show();
 
-                if (user != null)
-                {
-                    Application.Current.Resources[UserInfoConsts.UserId] = user.EmployeeId;
-                    Application.Current.Resources[UserInfoConsts.UserName] = user.Login;
-                    Application.Current.Resources[UserInfoConsts.JobTitleId] = user.JobTitleId;
-                    Application.Current.Resources[UserInfoConsts.JobTitleId] = user.JobTitle;
-
-                    MainWindow menuWindow = new MainWindow();
-                    menuWindow.Show();
-
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Пользователь не найден. Пожалуйста, проверьте логин и пароль.");
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Произошла ошибка: " + ex.Message);
+                Close();
             }
         }
 
         private void SignInGuestButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Resources[UserInfoConsts.JobTitleId] = 1;
+            Application.Current.Resources[UserInfoConsts.JobTitleId] = 0;
             Application.Current.Resources[UserInfoConsts.JobTitle] = "Гость";
+            Application.Current.Resources[UserInfoConsts.UserId] = 0;
             Application.Current.Resources[UserInfoConsts.UserName] = "Гость";
+
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+
             Close();
         }
     }

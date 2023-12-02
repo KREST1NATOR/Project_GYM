@@ -74,8 +74,7 @@ namespace Project_GYM.Infrastructure
                 .HasPrecision(53, 0);
 
             modelBuilder.Entity<JobTitleEntity>()
-                .Property(e => e.WorkSchedule)
-                .HasPrecision(53, 0);
+                .Property(e => e.WorkSchedule);
 
             modelBuilder.Entity<JobTitleEntity>()
                 .HasMany(e => e.Employee)

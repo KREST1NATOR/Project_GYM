@@ -26,7 +26,7 @@ namespace Project_GYM.Infrastructure
         public decimal Salary { get; set; }
 
         [Column("Work schedule")]
-        public decimal WorkSchedule { get; set; }
+        public string WorkSchedule { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeEntity> Employee { get; set; }

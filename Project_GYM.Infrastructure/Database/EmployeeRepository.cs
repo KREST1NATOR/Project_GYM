@@ -38,7 +38,7 @@ namespace Project_GYM.Infrastructure.Database
             entity.LengthOfService = entity.LengthOfService;
             if (string.IsNullOrEmpty(entity.Surname) || string.IsNullOrEmpty(entity.FirstName) || string.IsNullOrEmpty(entity.Gender) || string.IsNullOrEmpty(entity.DateOfBirth) || string.IsNullOrEmpty(entity.LengthOfService))
             {
-                throw new Exception("Поля, кроме отчества, не могут быть пустыми");
+                MessageBox.Show("Поля, кроме отчества, не могут быть пустыми");
             }
             using (var context = new Context())
             {
@@ -108,17 +108,20 @@ namespace Project_GYM.Infrastructure.Database
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                throw new ArgumentException("Логин и пароль должны быть заполнены.");
+                MessageBox.Show("Логин и пароль должны быть заполнены.");
+                return null;
             }
 
-            if (login.Length > 100 || password.Length > 25)
+            if (login.Length > 15 || password.Length > 16)
             {
-                throw new ArgumentException("Логин и пароль не могут быть длиннее 25 символов.");
+                MessageBox.Show("Логин и пароль не может быть длиннее 15 символов.");
+                return null;
             }
 
             if (!login.All(char.IsLetterOrDigit) || !password.All(char.IsLetterOrDigit))
             {
-                throw new ArgumentException("Логин и пароль могут содержать только буквы и цифры.");
+                MessageBox.Show("Логин и пароль могут содержать только буквы и цифры.");
+                return null;
             }
 
             using (var context = new Context())
@@ -127,6 +130,12 @@ namespace Project_GYM.Infrastructure.Database
                     .Include(x => x.JobTitle)
                     .FirstOrDefault(e => e.Login == login && e.Password == password);
 
+                if (item == null)
+                {
+                    MessageBox.Show("Пользователь не найден. Пожалуйста, проверьте логин и пароль.");
+                    return null;
+                }
+
                 return EmployeeMapper.Map(item);
             }
         }
@@ -134,7 +143,7 @@ namespace Project_GYM.Infrastructure.Database
         {
             if (string.IsNullOrEmpty(search))
             {
-                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+                MessageBox.Show("Поисковый запрос не может быть пустым.");
             }
 
             search = search.Trim().ToLower();
@@ -142,7 +151,7 @@ namespace Project_GYM.Infrastructure.Database
             using (var context = new Context())
             {
                 var result = context.Employees
-                    .Where(x => x.Surname.Contains(search) || x.FirstName.Contains(search) || x.Patronymic.Contains(search))
+                    .Where(x => x.Surname.ToLower().Contains(search) || x.FirstName.ToLower().Contains(search) || x.Patronymic.ToLower().Contains(search))
                     .ToList();
 
                 return EmployeeMapper.Map(result);

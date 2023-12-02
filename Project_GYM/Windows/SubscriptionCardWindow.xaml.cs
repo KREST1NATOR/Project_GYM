@@ -1,4 +1,5 @@
-﻿using Project_GYM.Infrastructure.Database;
+﻿using Project_GYM.Infrastructure.Consts;
+using Project_GYM.Infrastructure.Database;
 using Project_GYM.Infrastructure.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,19 +32,20 @@ namespace Project_GYM.Windows
         public SubscriptionCardWindow(SubscriptionTypeViewModel selectedItem)
         {
             InitializeComponent();
+            GrantAccessByRole();
             if (selectedItem != null)
             {
                 _selectedItem = selectedItem;
-                Name.Text = selectedItem.Name;
-                Cost.Text = selectedItem.Cost.ToString();
-                Term.Text = selectedItem.Term.ToString();
+                NameTextBox.Text = selectedItem.Name;
+                CostTextBox.Text = selectedItem.Cost.ToString();
+                TermTextBox.Text = selectedItem.Term.ToString();
             }
             else
             {
                 _selectedItem = selectedItem;
-                Name.Text = null;
-                Cost.Text = null;
-                Term.Text = null;
+                NameTextBox.Text = null;
+                CostTextBox.Text = null;
+                TermTextBox.Text = null;
             }
         }
 
@@ -57,16 +59,16 @@ namespace Project_GYM.Windows
             try
             {
                 _repository = new SubscriptionTypeRepository();
-                if (Name.Text.Count() != 0)
+                if (NameTextBox.Text.Count() != 0)
                 {
                     if (_selectedItem != null)
                     {
                         var entity = new SubscriptionTypeViewModel
                         {
                             SubscriptionTypeId = _selectedItem.SubscriptionTypeId,
-                            Name = Name.Text,
-                            Cost = Convert.ToDecimal(Cost.Text),
-                            Term = Convert.ToDecimal(Term.Text),
+                            Name = NameTextBox.Text,
+                            Cost = Convert.ToDecimal(CostTextBox.Text),
+                            Term = Convert.ToDecimal(TermTextBox.Text),
                         };
                         if (_repository != null)
                         {
@@ -82,9 +84,9 @@ namespace Project_GYM.Windows
                     {
                         var entity = new SubscriptionTypeViewModel
                         {
-                            Name = Name.Text,
-                            Cost = Convert.ToDecimal(Cost.Text),
-                            Term = Convert.ToDecimal(Term.Text),
+                            Name = NameTextBox.Text,
+                            Cost = Convert.ToDecimal(CostTextBox.Text),
+                            Term = Convert.ToDecimal(TermTextBox.Text),
                         };
                         if (_repository != null)
                         {
@@ -106,6 +108,35 @@ namespace Project_GYM.Windows
             catch
             {
                 MessageBox.Show("Не все поля заполнены");
+            }
+        }
+        private void GrantAccessByRole()
+        {
+            if (Application.Current.Resources.Contains(UserInfoConsts.JobTitleId))
+            {
+                int jobTitleId = Convert.ToInt32(Application.Current.Resources[UserInfoConsts.JobTitleId]);
+
+                if (jobTitleId == 2 || jobTitleId == 4) // Роль администратора 2
+                {
+                    SaveButton.IsEnabled = false;
+                    NameTextBox.IsEnabled = false;
+                    CostTextBox.IsEnabled = false;
+                    TermTextBox.IsEnabled = false;
+                }
+                else if (jobTitleId == 5 || jobTitleId == 6) // Роль уборщика
+                {
+                    SaveButton.IsEnabled = false;
+                    NameTextBox.IsEnabled = false;
+                    CostTextBox.IsEnabled = false;
+                    TermTextBox.IsEnabled = false;
+                }
+                else if (jobTitleId == 0) // Роль гостя
+                {
+                    SaveButton.IsEnabled = false;
+                    NameTextBox.IsEnabled = false;
+                    CostTextBox.IsEnabled = false;
+                    TermTextBox.IsEnabled = false;
+                }
             }
         }
     }

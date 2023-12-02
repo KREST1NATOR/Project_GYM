@@ -38,7 +38,7 @@ namespace Project_GYM.Infrastructure.Database
             entity.DateOfBirth = entity.DateOfBirth.Trim();
             if (string.IsNullOrEmpty(entity.Surname) || string.IsNullOrEmpty(entity.FirstName) || string.IsNullOrEmpty(entity.Gender) || string.IsNullOrEmpty(entity.DateOfBirth))
             {
-                throw new Exception("Поля, кроме отчества, не могут быть пустыми");
+                MessageBox.Show("Поля, кроме отчества, не могут быть пустыми");
             }
             using (var context = new Context())
             {
@@ -106,7 +106,7 @@ namespace Project_GYM.Infrastructure.Database
         {
             if (string.IsNullOrEmpty(search))
             {
-                throw new ArgumentException("Поисковый запрос не может быть пустым.");
+                MessageBox.Show("Поисковый запрос не может быть пустым.");
             }
 
             search = search.Trim().ToLower();
@@ -114,7 +114,7 @@ namespace Project_GYM.Infrastructure.Database
             using (var context = new Context())
             {
                 var result = context.Clients
-                    .Where(x => x.Surname.Contains(search) || x.FirstName.Contains(search) || x.Patronymic.Contains(search))
+                    .Where(x => x.Surname.ToLower().Contains(search) || x.FirstName.ToLower().Contains(search) || x.Patronymic.ToLower().Contains(search))
                     .ToList();
 
                 return ClientMapper.Map(result);
