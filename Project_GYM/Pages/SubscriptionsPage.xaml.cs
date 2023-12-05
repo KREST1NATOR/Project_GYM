@@ -104,19 +104,25 @@ namespace Project_GYM.Pages
         {
             string search = SearchTextBox.Text;
 
-            var subscriptionTypeRepository = new SubscriptionTypeRepository();
-            var searchResults = subscriptionTypeRepository.Search(search);
-
-            // Преобразование результатов поиска в ClientViewModel
-            var searchViewModels = searchResults.Select(result => new SubscriptionTypeViewModel
+            if (string.IsNullOrEmpty(search))
             {
-                Name = result.Name,
-            }).ToList();
+                MessageBox.Show("Поисковый запрос не может быть пустым.");
+            }
+            else
+            {
+                var subscriptionTypeRepository = new SubscriptionTypeRepository();
+                var searchResults = subscriptionTypeRepository.Search(search);
 
-            // Обновление DataGrid с результатами поиска
-            SubscriptionsDataGrid.ItemsSource = searchViewModels;
+                // Преобразование результатов поиска в ClientViewModel
+                var searchViewModels = searchResults.Select(result => new SubscriptionTypeViewModel
+                {
+                    Name = result.Name,
+                }).ToList();
+
+                // Обновление DataGrid с результатами поиска
+                SubscriptionsDataGrid.ItemsSource = searchViewModels;
+            }
         }
-
         private void GenerateQRCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try

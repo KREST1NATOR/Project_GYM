@@ -72,21 +72,27 @@ namespace Project_GYM.Pages
         {
             string search = SearchTextBox.Text;
 
-            var employeeRepository = new EmployeeRepository();
-            var searchResults = employeeRepository.Search(search);
-
-            // Преобразование результатов поиска в ClientViewModel
-            var searchViewModels = searchResults.Select(result => new EmployeeViewModel
+            if (string.IsNullOrEmpty(search))
             {
-                Surname = result.Surname,
-                FirstName = result.FirstName,
-                Patronymic = result.Patronymic,
-            }).ToList();
+                MessageBox.Show("Поисковый запрос не может быть пустым.");
+            }
+            else
+            {
+                var employeeRepository = new EmployeeRepository();
+                var searchResults = employeeRepository.Search(search);
 
-            // Обновление DataGrid с результатами поиска
-            EmployeesDataGrid.ItemsSource = searchViewModels;
+                // Преобразование результатов поиска в ClientViewModel
+                var searchViewModels = searchResults.Select(result => new EmployeeViewModel
+                {
+                    Surname = result.Surname,
+                    FirstName = result.FirstName,
+                    Patronymic = result.Patronymic,
+                }).ToList();
+
+                // Обновление DataGrid с результатами поиска
+                EmployeesDataGrid.ItemsSource = searchViewModels;
+            }
         }
-
         private void GenerateQRCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try

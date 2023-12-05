@@ -95,11 +95,6 @@ namespace Project_GYM.Infrastructure.Database
         }
         public List<SubscriptionTypeViewModel> Search(string search)
         {
-            if (string.IsNullOrEmpty(search))
-            {
-                MessageBox.Show("Поисковый запрос не может быть пустым.");
-            }
-
             search = search.Trim().ToLower();
 
             using (var context = new Context())
