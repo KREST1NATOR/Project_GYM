@@ -101,21 +101,27 @@ namespace Project_GYM.Pages
         {
             string search = SearchTextBox.Text;
 
-            var clientRepository = new ClientRepository();
-            var searchResults = clientRepository.Search(search);
-
-            // Преобразование результатов поиска в ClientViewModel
-            var searchViewModels = searchResults.Select(result => new ClientViewModel
+            if (string.IsNullOrEmpty(search))
             {
-                Surname = result.Surname,
-                FirstName = result.FirstName,
-                Patronymic = result.Patronymic,
-            }).ToList();
+                MessageBox.Show("Поисковый запрос не может быть пустым.");
+            }
+            else
+            {
+                var clientRepository = new ClientRepository();
+                var searchResults = clientRepository.Search(search);
 
-            // Обновление DataGrid с результатами поиска
-            ClientsDataGrid.ItemsSource = searchViewModels;
+                // Преобразование результатов поиска в ClientViewModel
+                var searchViewModels = searchResults.Select(result => new ClientViewModel
+                {
+                    Surname = result.Surname,
+                    FirstName = result.FirstName,
+                    Patronymic = result.Patronymic,
+                }).ToList();
+
+                // Обновление DataGrid с результатами поиска
+                ClientsDataGrid.ItemsSource = searchViewModels;
+            }
         }
-
         private void GenerateQRCodeButton_Click(object sender, RoutedEventArgs e)
         {
             try
