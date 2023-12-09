@@ -101,7 +101,7 @@ namespace Project_GYM.Pages
 
                 if (selectedClient == null)
                 {
-                    MessageBox.Show("Выберите клиента из списка.");
+                    MessageBox.Show("Выберите сотрудника из списка.");
                     return;
                 }
 
