@@ -8,7 +8,7 @@
         Title="Главное меню" Height="600" Width="900" WindowStartupLocation="CenterScreen" MinHeight="600" MinWidth="900">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Source="/Pages/MenuPage.xaml" Height="600" Width="900"/>
-        <Image x:Name="Logo" Width="150" Source="/Images/logo.png" Margin="10,0,0,0" HorizontalAlignment="Left" Height="554" VerticalAlignment="Top"/>
+        <Image x:Name="Logo" Width="210" Source="/Images/logo.png" Margin="10,0,0,0" HorizontalAlignment="Left" Height="554" VerticalAlignment="Top"/>
         <Label x:Name="LogoName" Content="Сворцовский крест" Margin="0,28,0,0" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="360"/>
     </Grid>
 </Window>
