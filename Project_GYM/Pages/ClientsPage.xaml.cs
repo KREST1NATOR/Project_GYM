@@ -186,5 +186,10 @@ namespace Project_GYM.Pages
                 }
             }
         }
+
+        private void ClientsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -29,7 +29,23 @@ namespace Project_GYM.Windows
         {
             InitializeComponent();
         }
+        private void GenderTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (GenderTextBox.Text == "М или Ж")
+            {
+                GenderTextBox.Text = "";
+                GenderTextBox.Foreground = Brushes.DarkGray;
+            }
+        }
 
+        private void GenderTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(GenderTextBox.Text))
+            {
+                GenderTextBox.Text = "М или Ж";
+                GenderTextBox.Foreground = Brushes.DarkGray;
+            }
+        }
         public ClientCardWindow(ClientViewModel selectedItem)
         {
             InitializeComponent();
@@ -62,59 +78,65 @@ namespace Project_GYM.Windows
             try
             {
                 _repository = new ClientRepository();
-                if (DateOfBirthTextBox.Text.Count() == 10)
+                if (GenderTextBox.Text.Count() == 1)
                 {
-                    if (_selectedItem != null)
+                    if (DateOfBirthTextBox.Text.Count() == 10)
                     {
-                        var entity = new ClientViewModel
+                        if (_selectedItem != null)
                         {
-                            ClientId = _selectedItem.ClientId,
-                            Surname = SurnameTextBox.Text,
-                            FirstName = FirstNameTextBox.Text,
-                            Patronymic = PatronymicTextBox.Text,
-                            Gender = GenderTextBox.Text,
-                            DateOfBirth = DateOfBirthTextBox.Text,
-                        };
-                        if (_repository != null)
-                        {
-                            _repository.Update(entity);
-                            Window.GetWindow(this).Close();
+                            var entity = new ClientViewModel
+                            {
+                                ClientId = _selectedItem.ClientId,
+                                Surname = SurnameTextBox.Text,
+                                FirstName = FirstNameTextBox.Text,
+                                Patronymic = PatronymicTextBox.Text,
+                                Gender = GenderTextBox.Text,
+                                DateOfBirth = DateOfBirthTextBox.Text,
+                            };
+                            if (_repository != null)
+                            {
+                                _repository.Update(entity);
+                                Window.GetWindow(this).Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show(".");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show(".");
+                            var entity = new ClientViewModel
+                            {
+                                Surname = SurnameTextBox.Text,
+                                FirstName = FirstNameTextBox.Text,
+                                Patronymic = PatronymicTextBox.Text,
+                                Gender = GenderTextBox.Text,
+                                DateOfBirth = DateOfBirthTextBox.Text,
+                            };
+                            if (_repository != null)
+                            {
+                                _repository.Add(entity);
+                                Window.GetWindow(this).Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("-");
+                            }
                         }
                     }
                     else
                     {
-                        var entity = new ClientViewModel
-                        {
-                            Surname = SurnameTextBox.Text,
-                            FirstName = FirstNameTextBox.Text,
-                            Patronymic = PatronymicTextBox.Text,
-                            Gender = GenderTextBox.Text,
-                            DateOfBirth = DateOfBirthTextBox.Text,
-                        };
-                        if (_repository != null)
-                        {
-                            _repository.Add(entity);
-                            Window.GetWindow(this).Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("-");
-                        }
+                        MessageBox.Show("Поле 'День рождения' должно содержать 10 символов");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Поле 'День рождения' должно содержать 10 символов");
+                    MessageBox.Show("Поле 'Пол' должно содержать не более 1 символа");
                 }
-
             }
             catch
             {
-                MessageBox.Show("Не все поля заполнены");
+                MessageBox.Show("Не все поля заполнены!");
             }
         }
         private void GrantAccessByRole()

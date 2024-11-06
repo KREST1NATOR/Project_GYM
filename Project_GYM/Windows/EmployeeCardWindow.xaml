@@ -158,7 +158,10 @@
             <TextBox x:Name="SurnameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
             <TextBox x:Name="FirstNameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
             <TextBox x:Name="PatronymicTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="GenderTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="GenderTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"
+                Text="М или Ж"
+                GotFocus="GenderTextBox_GotFocus" 
+                LostFocus="GenderTextBox_LostFocus"/>
             <TextBox x:Name="DateOfBirthTextBox" MaxLength="10" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
             <TextBox x:Name="LengthOfServiceTextBox" Height="25" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
         </StackPanel>
