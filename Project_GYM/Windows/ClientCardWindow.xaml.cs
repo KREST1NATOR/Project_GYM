@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Project_GYM.Infrastructure.Consts;
+using Project_GYM.Infrastructure;
 
 namespace Project_GYM.Windows
 {
@@ -25,9 +26,20 @@ namespace Project_GYM.Windows
     {
         private ClientViewModel _selectedItem = null;
         private ClientRepository _repository;
+        private GymRepository _gymRepository;
+        private DiscountRepository _discountRepository;
         public ClientCardWindow()
         {
             InitializeComponent();
+            LoadComboBoxes();
+        }
+        private void LoadComboBoxes()
+        {
+            _gymRepository = new GymRepository(new Context());
+            _discountRepository = new DiscountRepository(new Context());
+
+            GymComboBox.ItemsSource = _gymRepository.GetGyms();
+            DiscountComboBox.ItemsSource = _discountRepository.GetDiscounts();
         }
         private void GenderTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -77,62 +89,23 @@ namespace Project_GYM.Windows
         {
             try
             {
+                var selectedGymId = (long)GymComboBox.SelectedValue;
+                var selectedDiscountId = (long)DiscountComboBox.SelectedValue;
+
+                var entity = new ClientViewModel
+                {
+                    Surname = SurnameTextBox.Text,
+                    FirstName = FirstNameTextBox.Text,
+                    Patronymic = PatronymicTextBox.Text,
+                    Gender = GenderTextBox.Text,
+                    DateOfBirth = DateOfBirthTextBox.Text,
+                    IdGym = selectedGymId,
+                    DiscountId = selectedDiscountId
+                };
+
                 _repository = new ClientRepository();
-                if (GenderTextBox.Text.Count() == 1)
-                {
-                    if (DateOfBirthTextBox.Text.Count() == 10)
-                    {
-                        if (_selectedItem != null)
-                        {
-                            var entity = new ClientViewModel
-                            {
-                                ClientId = _selectedItem.ClientId,
-                                Surname = SurnameTextBox.Text,
-                                FirstName = FirstNameTextBox.Text,
-                                Patronymic = PatronymicTextBox.Text,
-                                Gender = GenderTextBox.Text,
-                                DateOfBirth = DateOfBirthTextBox.Text,
-                            };
-                            if (_repository != null)
-                            {
-                                _repository.Update(entity);
-                                Window.GetWindow(this).Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show(".");
-                            }
-                        }
-                        else
-                        {
-                            var entity = new ClientViewModel
-                            {
-                                Surname = SurnameTextBox.Text,
-                                FirstName = FirstNameTextBox.Text,
-                                Patronymic = PatronymicTextBox.Text,
-                                Gender = GenderTextBox.Text,
-                                DateOfBirth = DateOfBirthTextBox.Text,
-                            };
-                            if (_repository != null)
-                            {
-                                _repository.Add(entity);
-                                Window.GetWindow(this).Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("-");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Поле 'День рождения' должно содержать 10 символов");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Поле 'Пол' должно содержать не более 1 символа");
-                }
+                _repository.Add(entity);
+                Window.GetWindow(this).Close();
             }
             catch
             {

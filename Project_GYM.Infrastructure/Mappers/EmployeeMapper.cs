@@ -22,7 +22,7 @@ namespace Project_GYM.Infrastructure.Mappers
                 LengthOfService = entity.LengthOfService.ToString(),
                 Login = entity.Login,
                 JobTitle = entity.JobTitle.Title,
-                JobTitleId = entity.JobTitleId.ToString(),
+                JobTitleId = entity.JobTitleId,
             };
             return viewModel;
         }

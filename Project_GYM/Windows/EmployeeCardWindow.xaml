@@ -153,7 +153,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Label Content="Сотрудник" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"/>
+        <Label Content="Сотрудник" FontFamily="Arial" FontSize="36" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
         <StackPanel VerticalAlignment="Center" Margin="170,0,30,0">
             <TextBox x:Name="SurnameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
             <TextBox x:Name="FirstNameTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
@@ -163,7 +163,9 @@
                 GotFocus="GenderTextBox_GotFocus" 
                 LostFocus="GenderTextBox_LostFocus"/>
             <TextBox x:Name="DateOfBirthTextBox" MaxLength="10" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
-            <TextBox x:Name="LengthOfServiceTextBox" Height="25" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <TextBox x:Name="LengthOfServiceTextBox" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" BorderBrush="{x:Null}" FontFamily="Arial" FontSize="20" Foreground="DarkGray" Style="{DynamicResource TextBoxRoundedStyle}"/>
+            <ComboBox x:Name="GymComboBox" DisplayMemberPath="Name" SelectedValuePath="IdGym" Height="25" Margin="0,0,0,20" Background="#FFF6F6F6" />
+            <ComboBox x:Name="JobTitleComboBox" DisplayMemberPath="Name" SelectedValuePath="JobTitleId" Height="25" Background="#FFF6F6F6" />
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Margin="10,0,335,0">
             <Label Content="Фамилия" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
@@ -171,9 +173,11 @@
             <Label Content="Отчество*" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
             <Label Content="Пол" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
             <Label Content="Дата рождения" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
-            <Label Content="Стаж работы" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+            <Label Content="Стаж работы" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+            <Label Content="Спортзал" Margin="0,0,0,20" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
+            <Label Content="Должность" FontFamily="Arial" FontSize="14" FontWeight="Bold" Foreground="#FF698AFF" HorizontalAlignment="Right"/>
         </StackPanel>
         <Button x:Name="CancelButton" Content="Отменить" FontFamily="Arial" FontSize="12" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Grid.ColumnSpan="1" Height="30" Width="100" Style="{DynamicResource RoundedButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="CancelButton_Click"/>
-        <Button x:Name="SaveButton" Content="Сохранить" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Grid.ColumnSpan="1" Height="50" Width="150" VerticalAlignment="Top" Style="{DynamicResource RoundedButtonStyle}" Margin="0,420,175,0" Click="SaveButton_Click" HorizontalAlignment="Right"/>
+        <Button x:Name="SaveButton" Content="Сохранить" FontFamily="Arial" FontSize="18" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Grid.ColumnSpan="1" Height="50" Width="150" VerticalAlignment="Top" Style="{DynamicResource RoundedButtonStyle}" Margin="0,460,175,0" Click="SaveButton_Click" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

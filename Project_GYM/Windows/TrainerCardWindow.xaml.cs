@@ -1,4 +1,5 @@
-﻿using Project_GYM.Infrastructure.Consts;
+﻿using Project_GYM.Infrastructure;
+using Project_GYM.Infrastructure.Consts;
 using Project_GYM.Infrastructure.Database;
 using Project_GYM.Infrastructure.ViewModels;
 using System;
@@ -23,12 +24,18 @@ namespace Project_GYM.Windows
     public partial class TrainerCardWindow : Window
     {
         private TrainerViewModel _selectedItem = null;
-        private TrainerRepository _repository;
+        private TrainerRepository _trainerRepository;
+        private GymRepository _gymRepository;
         public TrainerCardWindow()
         {
             InitializeComponent();
+            LoadComboBoxes();
         }
-
+        private void LoadComboBoxes()
+        {
+            _gymRepository = new GymRepository(new Context());
+            GymComboBox.ItemsSource = _gymRepository.GetGyms();
+        }
         public TrainerCardWindow(TrainerViewModel selectedItem)
         {
             InitializeComponent();
@@ -58,63 +65,27 @@ namespace Project_GYM.Windows
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                _repository = new TrainerRepository();
-                if (DateOfBirthTextBox.Text.Count() == 10)
-                {
-                    if (_selectedItem != null)
-                    {
-                        var entity = new TrainerViewModel
-                        {
-                            TrainerID = _selectedItem.TrainerID,
-                            Surname = SurnameTextBox.Text,
-                            FirstName = FirstNameTextBox.Text,
-                            Patronymic = PatronymicTextBox.Text,
-                            DateOfBirth = DateOfBirthTextBox.Text,
-                            LengthOfService = LengthOfServiceTextBox.Text,
-                        };
-                        if (_repository != null)
-                        {
-                            _repository.Update(entity);
-                            Window.GetWindow(this).Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show(".");
-                        }
-                    }
-                    else
-                    {
-                        var entity = new TrainerViewModel
-                        {
-                            Surname = SurnameTextBox.Text,
-                            FirstName = FirstNameTextBox.Text,
-                            Patronymic = PatronymicTextBox.Text,
-                            DateOfBirth = DateOfBirthTextBox.Text,
-                            LengthOfService = LengthOfServiceTextBox.Text,
-                        };
-                        if (_repository != null)
-                        {
-                            _repository.Add(entity);
-                            Window.GetWindow(this).Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("-");
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Поле 'День рождения' должно содержать 10 символов");
-                }
+                var selectedGymId = (long)GymComboBox.SelectedValue;
 
+                var trainer = new TrainerViewModel
+                {
+                    Surname = SurnameTextBox.Text,
+                    FirstName = FirstNameTextBox.Text,
+                    Patronymic = PatronymicTextBox.Text,
+                    DateOfBirth = DateOfBirthTextBox.Text,
+                    IdGym = selectedGymId
+                };
+
+                _trainerRepository = new TrainerRepository();
+                _trainerRepository.Add(trainer);
+                MessageBox.Show("Тренер успешно сохранен!");
+                Close();
             }
             catch
             {
-                MessageBox.Show("Не все поля заполнены");
+                MessageBox.Show("Не все поля заполнены или заполнены неверно!");
             }
         }
         private void GrantAccessByRole()

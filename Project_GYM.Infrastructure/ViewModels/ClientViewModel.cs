@@ -14,5 +14,7 @@ namespace Project_GYM.Infrastructure.ViewModels
         public string Patronymic { get; set; }
         public string Gender { get; set; }
         public string DateOfBirth { get; set; }
+        public long IdGym { get; set; }
+        public long DiscountId { get; set; }
     }
 }

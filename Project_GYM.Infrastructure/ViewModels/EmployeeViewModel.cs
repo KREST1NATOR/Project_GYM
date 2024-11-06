@@ -18,6 +18,7 @@ namespace Project_GYM.Infrastructure.ViewModels
         public string Login { get; set; }
         public string Password { get; set; }
         public string JobTitle { get; set; }
-        public string JobTitleId { get; set; }
+        public long JobTitleId { get; set; }
+        public long IdGym { get; set; }
     }
 }

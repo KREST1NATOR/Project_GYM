@@ -1,4 +1,5 @@
-﻿using Project_GYM.Infrastructure.Consts;
+﻿using Project_GYM.Infrastructure;
+using Project_GYM.Infrastructure.Consts;
 using Project_GYM.Infrastructure.Database;
 using Project_GYM.Infrastructure.ViewModels;
 using System;
@@ -23,10 +24,21 @@ namespace Project_GYM.Windows
     public partial class EmployeeCardWindow : Window
     {
         private EmployeeViewModel _selectedItem = null;
-        private EmployeeRepository _repository;
+        private EmployeeRepository _employeeRepository;
+        private GymRepository _gymRepository;
+        private JobTitleRepository _jobTitleRepository;
         public EmployeeCardWindow()
         {
             InitializeComponent();
+            LoadComboBoxes();
+        }
+        private void LoadComboBoxes()
+        {
+            _gymRepository = new GymRepository(new Context());
+            _jobTitleRepository = new JobTitleRepository(new Context());
+
+            GymComboBox.ItemsSource = _gymRepository.GetGyms();
+            JobTitleComboBox.ItemsSource = _jobTitleRepository.GetJobTitles();
         }
         private void GenderTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -78,68 +90,28 @@ namespace Project_GYM.Windows
         {
             try
             {
-                _repository = new EmployeeRepository();
-                if (GenderTextBox.Text.Count() == 1)
+                var selectedGymId = (long)GymComboBox.SelectedValue;
+                var selectedJobTitleId = (long)JobTitleComboBox.SelectedValue;
+
+                var employee = new EmployeeViewModel
                 {
-                    if (DateOfBirthTextBox.Text.Count() == 10)
-                    {
-                        if (_selectedItem != null)
-                        {
-                            var entity = new EmployeeViewModel
-                            {
-                                EmployeeId = _selectedItem.EmployeeId,
-                                Surname = SurnameTextBox.Text,
-                                FirstName = FirstNameTextBox.Text,
-                                Patronymic = PatronymicTextBox.Text,
-                                Gender = GenderTextBox.Text,
-                                DateOfBirth = DateOfBirthTextBox.Text,
-                                LengthOfService = LengthOfServiceTextBox.Text,
-                            };
-                            if (_repository != null)
-                            {
-                                _repository.Update(entity);
-                                Window.GetWindow(this).Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show(".");
-                            }
-                        }
-                        else
-                        {
-                            var entity = new EmployeeViewModel
-                            {
-                                Surname = SurnameTextBox.Text,
-                                FirstName = FirstNameTextBox.Text,
-                                Patronymic = PatronymicTextBox.Text,
-                                Gender = GenderTextBox.Text,
-                                DateOfBirth = DateOfBirthTextBox.Text,
-                                LengthOfService = LengthOfServiceTextBox.Text,
-                            };
-                            if (_repository != null)
-                            {
-                                _repository.Add(entity);
-                                Window.GetWindow(this).Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("-");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Поле 'День рождения' должно содержать 10 символов");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Поле 'Пол' должно содержать не более 1 символа");
-                }
+                    Surname = SurnameTextBox.Text,
+                    FirstName = FirstNameTextBox.Text,
+                    Patronymic = PatronymicTextBox.Text,
+                    Gender = GenderTextBox.Text,
+                    DateOfBirth = DateOfBirthTextBox.Text,
+                    LengthOfService = LengthOfServiceTextBox.Text,
+                    IdGym = selectedGymId,
+                    JobTitleId = selectedJobTitleId
+                };
+
+                _employeeRepository = new EmployeeRepository();
+                _employeeRepository.Add(employee);
+                Window.GetWindow(this).Close();
             }
             catch
             {
-                MessageBox.Show("Не все поля заполнены!");
+                MessageBox.Show("Не все поля заполнены или заполнены неверно!");
             }
         }
         private void GrantAccessByRole()

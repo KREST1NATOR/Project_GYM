@@ -8,5 +8,16 @@ namespace Project_GYM.Infrastructure.Database
 {
     public class DiscountRepository
     {
+        private readonly Context _context;
+
+        public DiscountRepository(Context context)
+        {
+            _context = context;
+        }
+
+        public List<DiscountEntity> GetDiscounts()
+        {
+            return _context.Discounts.ToList();
+        }
     }
 }
