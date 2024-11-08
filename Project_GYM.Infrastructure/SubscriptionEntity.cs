@@ -28,9 +28,6 @@ namespace Project_GYM.Infrastructure
 
         public long SubscriptionTypeId { get; set; }
 
-        [Column("ID Gym")]
-        public long IdGym { get; set; }
-
         [Column("Client ID")]
         public long ClientId { get; set; }
 
@@ -38,8 +35,6 @@ namespace Project_GYM.Infrastructure
         public long? TrainerId { get; set; }
 
         public virtual ClientEntity Client { get; set; }
-
-        public virtual GymEntity Gym { get; set; }
 
         public virtual StatusEntity Status { get; set; }
 

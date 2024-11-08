@@ -29,11 +29,6 @@ namespace Project_GYM.Infrastructure
         [Column("Product category ID")]
         public long ProductCategoryId { get; set; }
 
-        [Column("ID Gym")]
-        public long IdGym { get; set; }
-
-        public virtual GymEntity Gym { get; set; }
-
         public virtual ProductCategoryEntity ProductCategory { get; set; }
     }
 }

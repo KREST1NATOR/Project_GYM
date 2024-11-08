@@ -39,11 +39,6 @@ namespace Project_GYM.Infrastructure
         [Column("Length of service")]
         public decimal LengthOfService { get; set; }
 
-        [Column("ID Gym")]
-        public long IDGym { get; set; }
-
-        public virtual GymEntity Gym { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubscriptionEntity> Subscription { get; set; }
     }

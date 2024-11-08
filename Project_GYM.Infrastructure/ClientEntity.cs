@@ -40,16 +40,6 @@ namespace Project_GYM.Infrastructure
         [StringLength(2147483647)]
         public string DateOfBirth { get; set; }
 
-        [Column("Discount ID")]
-        public long DiscountId { get; set; }
-
-        [Column("ID Gym")]
-        public long IdGym { get; set; }
-
-        public virtual DiscountEntity Discount { get; set; }
-
-        public virtual GymEntity Gym { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubscriptionEntity> Subscription { get; set; }
     }

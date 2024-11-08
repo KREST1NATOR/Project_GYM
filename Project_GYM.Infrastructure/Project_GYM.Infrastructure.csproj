@@ -132,9 +132,7 @@
     <Compile Include="Database\SubscriptionRepository.cs" />
     <Compile Include="Database\SubscriptionTypeRepository.cs" />
     <Compile Include="Database\TrainerRepository.cs" />
-    <Compile Include="DiscountEntity.cs" />
     <Compile Include="EmployeeEntity.cs" />
-    <Compile Include="GymEntity.cs" />
     <Compile Include="JobTitleEntity.cs" />
     <Compile Include="Mappers\ClientMapper.cs" />
     <Compile Include="Mappers\EmployeeMapper.cs" />

@@ -13,9 +13,7 @@ namespace Project_GYM.Infrastructure
         }
 
         public virtual DbSet<ClientEntity> Clients { get; set; }
-        public virtual DbSet<DiscountEntity> Discounts { get; set; }
         public virtual DbSet<EmployeeEntity> Employees { get; set; }
-        public virtual DbSet<GymEntity> Gyms { get; set; }
         public virtual DbSet<JobTitleEntity> JobTitles { get; set; }
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<ProductCategoryEntity> ProductCategories { get; set; }
@@ -31,43 +29,9 @@ namespace Project_GYM.Infrastructure
                 .WithRequired(e => e.Client)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<DiscountEntity>()
-                .Property(e => e.Value)
-                .HasPrecision(53, 0);
-
-            modelBuilder.Entity<DiscountEntity>()
-                .HasMany(e => e.Client)
-                .WithRequired(e => e.Discount)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<EmployeeEntity>()
                 .Property(e => e.LengthOfService)
                 .HasPrecision(53, 0);
-
-            modelBuilder.Entity<GymEntity>()
-                .HasMany(e => e.Client)
-                .WithRequired(e => e.Gym)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GymEntity>()
-                .HasMany(e => e.Employee)
-                .WithRequired(e => e.Gym)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GymEntity>()
-                .HasMany(e => e.Product)
-                .WithRequired(e => e.Gym)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GymEntity>()
-                .HasMany(e => e.Subscription)
-                .WithRequired(e => e.Gym)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GymEntity>()
-                .HasMany(e => e.Trainer)
-                .WithRequired(e => e.Gym)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<JobTitleEntity>()
                 .Property(e => e.Salary)

@@ -47,11 +47,6 @@ namespace Project_GYM.Infrastructure
         [Column("Job_title_ID")]
         public long JobTitleId { get; set; }
 
-        [Column("ID Gym")]
-        public long IdGym { get; set; }
-
         public virtual JobTitleEntity JobTitle { get; set; }
-
-        public virtual GymEntity Gym { get; set; }
     }
 }
