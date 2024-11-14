@@ -36,6 +36,9 @@ namespace Project_GYM.Infrastructure.Database
             entity.Gender = entity.Gender.Trim();
             entity.DateOfBirth = entity.DateOfBirth.Trim();
             entity.LengthOfService = entity.LengthOfService;
+            entity.JobTitleId = entity.JobTitleId.Trim();
+            entity.Login = entity.Login.Trim();
+            entity.Password = entity.Password.Trim();
             if (string.IsNullOrEmpty(entity.Surname) || string.IsNullOrEmpty(entity.FirstName) || string.IsNullOrEmpty(entity.Gender) || string.IsNullOrEmpty(entity.DateOfBirth) || string.IsNullOrEmpty(entity.LengthOfService))
             {
                 MessageBox.Show("Поля, кроме отчества, не могут быть пустыми");
@@ -52,6 +55,9 @@ namespace Project_GYM.Infrastructure.Database
                     item.Gender = entity.Gender;
                     item.DateOfBirth = entity.DateOfBirth;
                     item.LengthOfService = Convert.ToDecimal(entity.LengthOfService);
+                    item.JobTitleId = (long)Convert.ToDecimal(entity.JobTitleId);
+                    item.Login = entity.Login;
+                    item.Password = entity.Password;
                     context.Employees.Add(item);
                     context.SaveChanges();
                     MessageBox.Show("Успешное сохранение");
@@ -82,6 +88,9 @@ namespace Project_GYM.Infrastructure.Database
             entity.Gender = entity.Gender.Trim();
             entity.DateOfBirth = entity.DateOfBirth.Trim();
             entity.LengthOfService = entity.LengthOfService;
+            entity.JobTitleId = entity.JobTitleId.Trim();
+            entity.Login = entity.Login.Trim();
+            entity.Password = entity.Password.Trim();
             if (string.IsNullOrEmpty(entity.Surname) || string.IsNullOrEmpty(entity.FirstName) || string.IsNullOrEmpty(entity.Gender) || string.IsNullOrEmpty(entity.DateOfBirth) || string.IsNullOrEmpty(entity.LengthOfService))
                 MessageBox.Show("Поля, кроме отчества, не могут быть пустыми");
 
@@ -95,6 +104,9 @@ namespace Project_GYM.Infrastructure.Database
                     item.Gender = entity.Gender.Trim();
                     item.DateOfBirth = entity.DateOfBirth;
                     item.LengthOfService = Convert.ToDecimal(entity.LengthOfService);
+                    item.JobTitleId = (long)Convert.ToDecimal(entity.JobTitleId);
+                    item.Login = entity.Login;
+                    item.Password = entity.Password;
                     context.SaveChanges();
                 }
                 else

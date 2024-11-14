@@ -207,6 +207,9 @@
                     <DataGridTextColumn Binding="{Binding Patronymic}" CanUserReorder="False" Header="Отчество" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Gender}" CanUserReorder="False" Header="Пол" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding LengthOfService}" CanUserReorder="False" Header="Стаж работы" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding JobTitleId}" CanUserReorder="False" Header="Должность" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Login}" CanUserReorder="False" Header="Логин" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Password}" CanUserReorder="False" Header="Пароль" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="UploadButton" Content="Выгрузить" Height="35" Width="150" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,10,0,0" Click="UploadButton_Click"/>

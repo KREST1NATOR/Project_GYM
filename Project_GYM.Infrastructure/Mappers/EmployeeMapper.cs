@@ -21,7 +21,8 @@ namespace Project_GYM.Infrastructure.Mappers
                 DateOfBirth = entity.DateOfBirth,
                 LengthOfService = entity.LengthOfService.ToString(),
                 Login = entity.Login,
-                JobTitle = entity.JobTitle.Title,
+                Password = entity.Password,
+                JobTitle = entity.JobTitle != null ? entity.JobTitle.Title : string.Empty,
                 JobTitleId = entity.JobTitleId.ToString(),
             };
             return viewModel;
@@ -43,6 +44,9 @@ namespace Project_GYM.Infrastructure.Mappers
                 Gender = viewModel.Gender,
                 DateOfBirth = viewModel.DateOfBirth,
                 LengthOfService = Convert.ToDecimal(viewModel.LengthOfService),
+                Login = viewModel.Login,
+                Password = viewModel.Password,
+                JobTitleId = (long)Convert.ToDecimal(viewModel.JobTitleId),
             };
             return entity;
         }

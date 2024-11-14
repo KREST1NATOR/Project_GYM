@@ -42,6 +42,9 @@ namespace Project_GYM.Windows
                 GenderTextBox.Text = selectedItem.Gender;
                 DateOfBirthTextBox.Text = selectedItem.DateOfBirth;
                 LengthOfServiceTextBox.Text = selectedItem.LengthOfService;
+                JobTitleIdTextBox.Text = selectedItem.JobTitleId;
+                LoginTextBox.Text = selectedItem.Login;
+                PasswordTextBox.Text = selectedItem.Password;
             }
             else
             {
@@ -52,6 +55,9 @@ namespace Project_GYM.Windows
                 GenderTextBox.Text = null;
                 DateOfBirthTextBox.Text = null;
                 LengthOfServiceTextBox.Text = null;
+                JobTitleIdTextBox.Text = null;
+                LoginTextBox.Text = null;
+                PasswordTextBox.Text = null;
             }
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -77,6 +83,9 @@ namespace Project_GYM.Windows
                             Gender = GenderTextBox.Text,
                             DateOfBirth = DateOfBirthTextBox.Text,
                             LengthOfService = LengthOfServiceTextBox.Text,
+                            JobTitleId = JobTitleIdTextBox.Text,
+                            Login = LoginTextBox.Text,
+                            Password = PasswordTextBox.Text,
                         };
                         if (_repository != null)
                         {
@@ -98,6 +107,9 @@ namespace Project_GYM.Windows
                             Gender = GenderTextBox.Text,
                             DateOfBirth = DateOfBirthTextBox.Text,
                             LengthOfService = LengthOfServiceTextBox.Text,
+                            JobTitleId = JobTitleIdTextBox.Text,
+                            Login = LoginTextBox.Text,
+                            Password = PasswordTextBox.Text,
                         };
                         if (_repository != null)
                         {
