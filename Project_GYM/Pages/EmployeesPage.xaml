@@ -192,9 +192,7 @@
     <Grid>
         <StackPanel Margin="660,10,50,10">
             <Button x:Name="SearchButton" Content="🔍" Height="35" Width="50" HorizontalAlignment="Left" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,200,0,0" Click="SearchButton_Click"/>
-            <Button x:Name="AddEmployeeButton" Content="Добавить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,15,0,0" Click="AddEmployeeButton_Click"/>
-            <Button x:Name="UpdateEmployeesButton" Content="Обновить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,25,0,0" Click="UpdateEmployeesButton_Click"/>
-            <Button x:Name="DeleteEmployeeButton" Content="Удалить" Height="35" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,25,0,0" Click="DeleteEmployeeButton_Click"/>
+            <Button x:Name="UpdateEmployeesButton" Content="Обновить" Height="35" Width="100" HorizontalAlignment="Left" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,25,0,0" Click="UpdateEmployeesButton_Click"/>
             <Button x:Name="GenerateQRCodeButton" Content="QR" Height="35" Width="50" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" Background="#FF698AFF" Foreground="WhiteSmoke" BorderBrush="#FF5077FF" Style="{DynamicResource RoundedButtonStyle}" Margin="0,15,0,0" Click="GenerateQRCodeButton_Click"/>
         </StackPanel>
         <StackPanel Margin="30,215,245,80">

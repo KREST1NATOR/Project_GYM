@@ -55,7 +55,7 @@ namespace Project_GYM.Pages
             var item = EmployeesDataGrid.SelectedItem as EmployeeViewModel;
             if (item == null)
             {
-                MessageBox.Show("-");
+                MessageBox.Show("Выберите сотрудника из списка.");
             }
             else
             {
@@ -146,35 +146,9 @@ namespace Project_GYM.Pages
             }
 
         }
-        private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.Hide();
-            var employeeCard = new EmployeeCardWindow();
-            employeeCard.ShowDialog();
-            UpdateGrid();
-            mainWindow.Show();
-        }
         private void UpdateEmployeesButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateGrid();
-        }
-        private void DeleteEmployeeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (EmployeesDataGrid.SelectedItem == null)
-            {
-                MessageBox.Show("Ничего не выбрано для удаления");
-            }
-            var item = EmployeesDataGrid.SelectedItem as EmployeeViewModel;
-            if (item == null)
-            {
-                MessageBox.Show("Не удалось получить данные");
-            }
-            else
-            {
-                _repository.Delete(item.EmployeeId);
-                UpdateGrid();
-            }
         }
         private void GrantAccessByRole()
         {
@@ -182,15 +156,8 @@ namespace Project_GYM.Pages
             {
                 int jobTitleId = Convert.ToInt32(Application.Current.Resources[UserInfoConsts.JobTitleId]);
 
-                if (jobTitleId == 2 || jobTitleId == 4) // Роль администратора 2
+                if (jobTitleId == 5 || jobTitleId == 6) // Роль уборщика
                 {
-                    AddEmployeeButton.IsEnabled = false;
-                    DeleteEmployeeButton.IsEnabled = false;
-                }
-                else if (jobTitleId == 5 || jobTitleId == 6) // Роль уборщика
-                {
-                    AddEmployeeButton.IsEnabled = false;
-                    DeleteEmployeeButton.IsEnabled = false;
                     UploadButton.IsEnabled = false;
                     GenerateQRCodeButton.IsEnabled = false;
                 }

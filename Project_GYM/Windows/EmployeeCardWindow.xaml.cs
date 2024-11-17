@@ -23,7 +23,7 @@ namespace Project_GYM.Windows
     public partial class EmployeeCardWindow : Window
     {
         private EmployeeViewModel _selectedItem = null;
-        private EmployeeRepository _repository;
+
         public EmployeeCardWindow()
         {
             InitializeComponent();
@@ -64,100 +64,23 @@ namespace Project_GYM.Windows
         {
             Window.GetWindow(this).Close();
         }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                _repository = new EmployeeRepository();
-                if (DateOfBirthTextBox.Text.Count() == 10)
-                {
-                    if (_selectedItem != null)
-                    {
-                        var entity = new EmployeeViewModel
-                        {
-                            EmployeeId = _selectedItem.EmployeeId,
-                            Surname = SurnameTextBox.Text,
-                            FirstName = FirstNameTextBox.Text,
-                            Patronymic = PatronymicTextBox.Text,
-                            Gender = GenderTextBox.Text,
-                            DateOfBirth = DateOfBirthTextBox.Text,
-                            LengthOfService = LengthOfServiceTextBox.Text,
-                            JobTitleId = JobTitleIdTextBox.Text,
-                            Login = LoginTextBox.Text,
-                            Password = PasswordTextBox.Text,
-                        };
-                        if (_repository != null)
-                        {
-                            _repository.Update(entity);
-                            Window.GetWindow(this).Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show(".");
-                        }
-                    }
-                    else
-                    {
-                        var entity = new EmployeeViewModel
-                        {
-                            Surname = SurnameTextBox.Text,
-                            FirstName = FirstNameTextBox.Text,
-                            Patronymic = PatronymicTextBox.Text,
-                            Gender = GenderTextBox.Text,
-                            DateOfBirth = DateOfBirthTextBox.Text,
-                            LengthOfService = LengthOfServiceTextBox.Text,
-                            JobTitleId = JobTitleIdTextBox.Text,
-                            Login = LoginTextBox.Text,
-                            Password = PasswordTextBox.Text,
-                        };
-                        if (_repository != null)
-                        {
-                            _repository.Add(entity);
-                            Window.GetWindow(this).Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("-");
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Поле 'День рождения' должно содержать 10 символов");
-                }
-
-            }
-            catch
-            {
-                MessageBox.Show("Не все поля заполнены");
-            }
-        }
         private void GrantAccessByRole()
         {
             if (Application.Current.Resources.Contains(UserInfoConsts.JobTitleId))
             {
                 int jobTitleId = Convert.ToInt32(Application.Current.Resources[UserInfoConsts.JobTitleId]);
 
-                if (jobTitleId == 2 || jobTitleId == 4) // Роль администратора 2
+                if (jobTitleId == 1 || jobTitleId == 2 || jobTitleId == 3 || jobTitleId == 4 || jobTitleId == 5 || jobTitleId == 6)
                 {
-                    SaveButton.IsEnabled = false;
                     SurnameTextBox.IsEnabled = false;
                     FirstNameTextBox.IsEnabled = false;
                     PatronymicTextBox.IsEnabled = false;
                     GenderTextBox.IsEnabled = false;
                     DateOfBirthTextBox.IsEnabled = false;
                     LengthOfServiceTextBox.IsEnabled = false;
-                }
-                else if (jobTitleId == 5 || jobTitleId == 6) // Роль уборщика
-                {
-                    SaveButton.IsEnabled = false;
-                    SurnameTextBox.IsEnabled = false;
-                    FirstNameTextBox.IsEnabled = false;
-                    PatronymicTextBox.IsEnabled = false;
-                    GenderTextBox.IsEnabled = false;
-                    DateOfBirthTextBox.IsEnabled = false;
-                    LengthOfServiceTextBox.IsEnabled = false;
+                    JobTitleIdTextBox.IsEnabled = false;
+                    LoginTextBox.IsEnabled = false;
+                    PasswordTextBox.IsEnabled = false;
                 }
             }
         }
